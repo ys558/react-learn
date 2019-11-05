@@ -5,6 +5,10 @@ import React, { Component } from 'react'
 // import StateTest from './components/03StateTest'
 import CartSample from './components/04CartSample'
 import LifeCycle from './components/05LifeCycle'
+import AntDesignUI from './components/06AntDesignUI'
+import ComponentIssue from './components/07ComponentIssue'
+import HigherOrderComponent from './components/08HigherOrderComponent'
+
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -51,7 +55,16 @@ export default class App extends Component {
 
         <hr/>
         {/* 生命周期： */}
-        {this.state.prop && <LifeCycle props={this.state}></LifeCycle>}
+        {/* {this.state.prop && <LifeCycle props={this.state}></LifeCycle>} */}
+
+        {/* antd */}
+        <AntDesignUI></AntDesignUI>
+
+        {/* 组件化存在的问题 */}
+        {/* <ComponentIssue></ComponentIssue> */}
+
+        {/* HOC 高阶组件*/}
+        <HigherOrderComponent></HigherOrderComponent>
       </div>
     )
   }

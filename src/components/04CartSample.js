@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+// 容器组件，父，用于控制逻辑
 export default class CartSample extends Component {
     constructor(props){
         super(props)
@@ -115,6 +116,7 @@ export default class CartSample extends Component {
     }
 }
 
+// 展示组件：子，仅用于展示
 // 3. 组件通信：子——>父，直接在（）里放置函数事件：给回父组件
 function Cart({data, minus, add}) {
     return (
