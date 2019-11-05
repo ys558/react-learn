@@ -15,6 +15,7 @@ export default class StateTest extends Component {
         this.setState(prevState =>  ({counter: prevState.counter + 1}))
         this.setState(prevState =>  ({counter: prevState.counter + 1}))
 
+
     }
 
     render() {

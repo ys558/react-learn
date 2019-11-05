@@ -1,17 +1,29 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import { Welcome1, Welcome2 } from './components/01CompType'
-import Clock  from './components/02State-setState'
-import StateTest from './components/03StateTest'
+// import logo from './logo.svg'
+// import { Welcome1, Welcome2 } from './components/01CompType'
+// import Clock  from './components/02State-setState'
+// import StateTest from './components/03StateTest'
+import CartSample from './components/04CartSample'
+import LifeCycle from './components/05LifeCycle'
 
-const formatName = (user) => {
-  return `${user.firstName} ${user.lastName}`
-}
+// const formatName = (user) => {
+//   return `${user.firstName} ${user.lastName}`
+// }
 export default class App extends Component {
+  // 演示组件生命周期：
+  state = { prop: 'some prop' }
+  componentDidMount(){
+    this.setState({prop: 'new prop'})
+    setTimeout(()=>{
+      this.setState({prop: '' })
+    }, 3000)
+  }
+
+
   render() {
-    const name = 'jerry'
-    const user = { firstName: `tom`, lastName: `jerry` }
-    const jsx = <p>hello, jerry</p>
+    // const name = 'jerry'
+    // const user = { firstName: `tom`, lastName: `jerry` }
+    // const jsx = <p>hello, jerry</p>
     return (
       <div>
         {/* <h3>React Course</h3> */}
@@ -32,7 +44,14 @@ export default class App extends Component {
         {/* <Clock></Clock> */}
 
         {/* 4. state的常见问题： */}
-        <StateTest></StateTest>
+        {/* <StateTest></StateTest> */}
+
+        {/* 5. 条件渲染 */}
+        <CartSample title="课程"></CartSample>
+
+        <hr/>
+        {/* 生命周期： */}
+        {this.state.prop && <LifeCycle props={this.state}></LifeCycle>}
       </div>
     )
   }
