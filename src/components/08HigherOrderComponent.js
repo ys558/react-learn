@@ -66,7 +66,7 @@ export default class HigherOrderComponent extends Component {
                 <NewKaikeba stage="React"></NewKaikeba>
 
                 {/* 5. 装饰器的使用，这里就不用定义新的<NewKaikeba></NewKaikeba>了，直接用装饰器注入后的即可<Kaikeba></Kaikeba> */}
-                <Kaikeba></Kaikeba>
+                {/* <Kaikeba></Kaikeba> */}
             </div>
         )
     }

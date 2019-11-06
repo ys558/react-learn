@@ -8,6 +8,7 @@ import LifeCycle from './components/05LifeCycle'
 import AntDesignUI from './components/06AntDesignUI'
 import ComponentIssue from './components/07ComponentIssue'
 import HigherOrderComponent from './components/08HigherOrderComponent'
+import Composition from './components/09Composition'
 
 
 // const formatName = (user) => {
@@ -65,6 +66,10 @@ export default class App extends Component {
 
         {/* HOC 高阶组件*/}
         <HigherOrderComponent></HigherOrderComponent>
+        <hr/>
+
+        {/* Composition 复合组件 */}
+        <Composition></Composition>
       </div>
     )
   }

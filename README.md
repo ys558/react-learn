@@ -55,7 +55,34 @@
 
   + `<Comp title={} onSubmit={this.onSubmit}><Comp />`
   + `onSubmit={this.onSubmit}` 是从子组件传来的事件
+  
++ 高阶组件
+
+
+  + 解决子class组件里重复渲染的问题，提升性能，优化办法：
+
+
+    + v15.3前，用 生命周期钩子函数控制是否渲染：`shouldComponentUpdate(nextProps){}`
+
+      ```jsx
+      shouldComponentUpdate(nextProps){
+          if (nextProps.xxx === this.props.xxx &&
+              nextProps.yyy === this.props.yyy) {
+              return false
+          }
+          return true
+      }
+      ```
+
+    + v15.3后，PureComponent
+
+      ```jsx
+          
+      ```
+
+    + v16.6.0后，React.mono()
 
 
 
 
+<!--  -->
