@@ -9,6 +9,7 @@ import AntDesignUI from './components/06AntDesignUI'
 import ComponentIssue from './components/07ComponentIssue'
 import HigherOrderComponent from './components/08HigherOrderComponent'
 import Composition from './components/09Composition'
+import Hook from './components/10Hook'
 
 
 // const formatName = (user) => {
@@ -52,7 +53,7 @@ export default class App extends Component {
         {/* <StateTest></StateTest> */}
 
         {/* 5. 条件渲染 */}
-        <CartSample title="课程"></CartSample>
+        {/* <CartSample title="课程"></CartSample> */}
 
         <hr/>
         {/* 生命周期： */}
@@ -65,11 +66,13 @@ export default class App extends Component {
         {/* <ComponentIssue></ComponentIssue> */}
 
         {/* HOC 高阶组件*/}
-        <HigherOrderComponent></HigherOrderComponent>
-        <hr/>
+        {/* <HigherOrderComponent></HigherOrderComponent> */}
 
         {/* Composition 复合组件 */}
-        <Composition></Composition>
+        {/* <Composition></Composition> */}
+        
+        {/* Hook */}
+        <Hook></Hook>
       </div>
     )
   }
