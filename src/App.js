@@ -10,7 +10,9 @@ import ComponentIssue from './components/07ComponentIssue'
 import HigherOrderComponent from './components/08HigherOrderComponent'
 import Composition from './components/09Composition'
 import Hook from './components/10Hook'
-
+import Context from './components/11Context'
+import WrappedNormalLoginForm from './components/12AntdForm'
+import MockAntdForm from './components/12MockAntdFormComponent'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -60,7 +62,7 @@ export default class App extends Component {
         {/* {this.state.prop && <LifeCycle props={this.state}></LifeCycle>} */}
 
         {/* antd */}
-        <AntDesignUI></AntDesignUI>
+        {/* <AntDesignUI></AntDesignUI> */}
 
         {/* 组件化存在的问题 */}
         {/* <ComponentIssue></ComponentIssue> */}
@@ -72,7 +74,15 @@ export default class App extends Component {
         {/* <Composition></Composition> */}
         
         {/* Hook */}
-        <Hook></Hook>
+        {/* <Hook></Hook> */}
+
+        {/* Context */}
+        {/* <Context></Context> */}
+
+        {/* antd  */}
+        {/* <WrappedNormalLoginForm></WrappedNormalLoginForm> */}
+        <hr/>
+        <MockAntdForm></MockAntdForm>
       </div>
     )
   }
