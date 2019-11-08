@@ -67,13 +67,16 @@ export default class App extends Component {
         {/* <ComponentIssue></ComponentIssue> */}
 
         {/* 08. HOC 高阶组件*/}
-        <HigherOrderComponent></HigherOrderComponent>
+        {/* <HigherOrderComponent></HigherOrderComponent> */}
 
         {/* 09. Composition 复合组件 */}
         {/* <Composition></Composition> */}
         
         {/* Hook */}
         {/* <Hook></Hook> */}
+
+        {/* 模拟antd创建UI组件： */}
+        <MockAntdForm></MockAntdForm>
       </div>
     )
   }

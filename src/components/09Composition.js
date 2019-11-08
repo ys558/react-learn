@@ -60,10 +60,12 @@ function RadioGrop(props){
     return (
     <div>
         {React.Children.map(props.children, child => {
-            // children 是一个虚拟dom
+            // children 本质是一个虚拟dom
             // vdom不可更改，必须克隆一个才能更改,以下这种写法错误：
             // child.props.name = props.name /* 错误写法 */
-            // vdom更改必须使用官方自带的方法：
+
+            /*正确写法：*/
+            // vdom赋值和更改必须使用官方自带的方法：
             return React.cloneElement(child, {name: props.name})
         })}
     </div>)
