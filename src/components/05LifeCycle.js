@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 
+/**
+ * 以下代码为 v16.0 的生命周期函数：
+ * v16.4 以后的生命周期，以下生命周期函数被删除，
+ * componentWillMount
+ * componentWillReceiveProps
+ * shouldComponentUpdate
+ * componentWillUpdate
+ * 取而代之的是
+ * getDerivedStateFromProps
+ */
 export default class LifeCycle extends Component {
-    /**
-     * 以下代码为 v16.0 的生命周期函数：
-     * v16.4 以后的生命周期，以下生命周期函数被删除，
-     * componentWillMount
-     * componentWillReceiveProps
-     * shouldComponentUpdate
-     * componentWillUpdate
-     * 取而代之的是
-     * getDerivedStateFromProps
-     */
     constructor(props) {
         super(props)
         console.log(`1. 组件构造函数执行 constructor`)

@@ -15,28 +15,18 @@
     +   "test": "react-app-rewired test",
     }
 
-    4. 项目根目录创建一个 config-overrides.js 用于修改默认配置。
-    module.exports = function override(config, env) {
-        // do stuff with the webpack config...
-    return config;
-    };
+    4. 项目根目录创建一个 config-overrides.js 用于修改默认配置。使用 babel-plugin-import
+    const { override, fixBabelImports } = require('customize-cra');
+    
+    module.exports = override(
+    fixBabelImports('import', {
+        libraryName: 'antd',
+        libraryDirectory: 'es',
+        style: 'css',
+    }),
+    );
 
-    5. 使用 babel-plugin-import
-    + const { override, fixBabelImports } = require('customize-cra');
-
-    - module.exports = function override(config, env) {
-    -   // do stuff with the webpack config...
-    -   return config;
-    - };
-    + module.exports = override(
-    +   fixBabelImports('import', {
-    +     libraryName: 'antd',
-    +     libraryDirectory: 'es',
-    +     style: 'css',
-    +   }),
-    + );
-
-    6. 然后移除前面在 src/App.css 里全量添加的 @import '~antd/dist/antd.css'; 样式代码，并且按下面的格式引入模块。
+    5. 然后移除前面在 src/App.css 里全量添加的 @import '~antd/dist/antd.css'; 样式代码，并且按下面的格式引入模块。
 
 
  */

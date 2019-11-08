@@ -57,32 +57,23 @@ export default class App extends Component {
         {/* 5. 条件渲染 */}
         {/* <CartSample title="课程"></CartSample> */}
 
-        <hr/>
-        {/* 生命周期： */}
+        {/* 05. 生命周期： */}
         {/* {this.state.prop && <LifeCycle props={this.state}></LifeCycle>} */}
 
-        {/* antd */}
+        {/* 06. antd基础应用 */}
         {/* <AntDesignUI></AntDesignUI> */}
 
-        {/* 组件化存在的问题 */}
+        {/* 07. 组件化存在的问题 */}
         {/* <ComponentIssue></ComponentIssue> */}
 
-        {/* HOC 高阶组件*/}
-        {/* <HigherOrderComponent></HigherOrderComponent> */}
+        {/* 08. HOC 高阶组件*/}
+        <HigherOrderComponent></HigherOrderComponent>
 
-        {/* Composition 复合组件 */}
+        {/* 09. Composition 复合组件 */}
         {/* <Composition></Composition> */}
         
         {/* Hook */}
         {/* <Hook></Hook> */}
-
-        {/* Context */}
-        {/* <Context></Context> */}
-
-        {/* antd  */}
-        {/* <WrappedNormalLoginForm></WrappedNormalLoginForm> */}
-        <hr/>
-        <MockAntdForm></MockAntdForm>
       </div>
     )
   }
