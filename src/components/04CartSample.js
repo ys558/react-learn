@@ -76,6 +76,10 @@ export default class CartSample extends Component {
         this.setState({ cart: newCart })
     }
 
+    btnStyle = {
+        'border': 'none', 'borderRadius': '50%',
+    }
+
     render() {
         // 方法1：
         // const title = this.props.title ? <h2>{this.props.title}</h2> : null;
@@ -110,6 +114,7 @@ export default class CartSample extends Component {
                     // 3.组件通信：子——>父,从子组件里过来的方法：
                     minus={this.minus}
                     add={this.add}
+                    btnStyle={this.btnStyle}
                 ></Cart>
             </div>
         )
@@ -118,7 +123,7 @@ export default class CartSample extends Component {
 
 // 展示组件：子，仅用于展示
 // 3. 组件通信：子——>父，直接在（）里放置函数事件：给回父组件
-function Cart({data, minus, add}) {
+function Cart({data, minus, add, btnStyle}) {
     return (
         <table>
             <tbody>
@@ -128,9 +133,9 @@ function Cart({data, minus, add}) {
                         <td>{d.text}</td>
                         <td>
                             {/* 3.  组件通信：子——>父，直接在事件里传d */}
-                            <button onClick={()=> minus(d)}>-</button>
+                            <button style={btnStyle} onClick={()=> minus(d)}>-</button>
                                 {d.count}
-                            <button onClick={()=> add(d)}>+</button>
+                            <button style={btnStyle} onClick={()=> add(d)}>+</button>
                         </td>
                     </tr>
                 ))}
