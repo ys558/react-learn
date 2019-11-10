@@ -9,21 +9,6 @@
  */
 import React, { Component } from 'react'
 
-// function Kaikeba(props) {
-//     return <div>{props.stage}-{props.name}</div>
-// }
-// 4. 为了使用装饰器，把Kaikeba改为class：
-// 5. 并将装饰器加入到原来的Kaikeba class
-// @withLog
-// @withKaikeba
-// @withLog
-class Kaikeba extends Component {
-    render() {
-        return <div>{this.props.stage}-{this.props.name}</div>
-    }
-}
-
-
 //  2. 将原 <Kaikeba></Kaikeba> 利用高阶组件进行处理；
 const withKaikeba = Comp => {
     const name = '高阶组件'
@@ -52,7 +37,26 @@ const withLog = Comp => {
 
 // 3. 高阶组件的链式调用:
 // 4. 这种语法比较累赘，可以采用ES7的装饰器语法，但要改变开课吧为class类型组件，需要安装新的插件，安装过程在最上面有阐述
-const NewKaikeba = withLog(withKaikeba(withLog(Kaikeba)))
+// const NewKaikeba = withLog(withKaikeba(withLog(Kaikeba)))
+
+
+
+// function Kaikeba(props) {
+//     return <div>{props.stage}-{props.name}</div>
+// }
+// 4. 为了使用装饰器，把Kaikeba改为class：
+// 5. 并将装饰器加入到原来的Kaikeba class
+@withLog
+@withKaikeba
+@withLog
+class Kaikeba extends Component {
+    render() {
+        return <div>{this.props.stage}-{this.props.name}</div>
+    }
+}
+
+
+
 
 
 export default class HigherOrderComponent extends Component {
@@ -63,10 +67,10 @@ export default class HigherOrderComponent extends Component {
                 {/* <Kaikeba stage="React"></Kaikeba> */}
 
                 {/* 2. 将原 <Kaikeba></Kaikeba> 进行处理；即上面的操作*/}
-                <NewKaikeba stage="React"></NewKaikeba>
+                {/* <NewKaikeba stage="React"></NewKaikeba> */}
 
                 {/* 5. 装饰器的使用，这里就不用定义新的<NewKaikeba></NewKaikeba>了，直接用装饰器注入后的即可<Kaikeba></Kaikeba> */}
-                {/* <Kaikeba></Kaikeba> */}
+                <Kaikeba stage="React"></Kaikeba>
             </div>
         )
     }

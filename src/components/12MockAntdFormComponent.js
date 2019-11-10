@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {Input, Button} from 'antd'
 
-// 创建一个高阶组件，扩展现有表单，事件处理、数据搜集、校验：
-function YYFormCreate(Comp) {
+// 1. 创建一个高阶组件，扩展现有表单，事件处理、数据搜集、校验：
+const YYFormCreate = (Comp) => {
 return class extends Component {
     constructor(props) {
         super(props)
@@ -51,7 +51,7 @@ return class extends Component {
                     onChange: this.handleChange
                 })}
                 {/* 校验错误的信息： */}
-                {/*  [field +"Message"]为es6的计算属性名 */}
+                {/*  [field +"Message"]为es6的属性名计算 */}
                 {this.state[field +"Message"] && (
                 <p style={{color: 'red'}}>{this.state[field +"Message"]}</p>
                 )}
@@ -77,7 +77,6 @@ return class extends Component {
 @YYFormCreate
 class MockAntdForm extends Component {
     onSubmit = () => {
-        console.log('submit')
         this.props.validate((isValid, data) =>{
             if (isValid) {
                 // 提交登录

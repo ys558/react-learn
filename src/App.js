@@ -13,6 +13,7 @@ import Hook from './components/10Hook'
 import Context from './components/11Context'
 import WrappedNormalLoginForm from './components/12AntdForm'
 import MockAntdForm from './components/12MockAntdFormComponent'
+import Rewirte from './components/12rewirte'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -76,7 +77,10 @@ export default class App extends Component {
         {/* <Hook></Hook> */}
 
         {/* 模拟antd创建UI组件： */}
-        <MockAntdForm></MockAntdForm>
+        {/* <MockAntdForm></MockAntdForm> */}
+
+        {/* 重写一遍 */}
+        <Rewirte></Rewirte>
       </div>
     )
   }
