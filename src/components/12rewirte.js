@@ -4,9 +4,8 @@
 import React, { Component } from 'react'
 import {Input, Button} from 'antd'
 
-// 1.
+// 1. 父组件，写成高阶组件，直接注入到子组件Rewrite里
 const YForm = (Comp) => {
-
 	return class extends Component {
 		constructor(props) {
 			super(props)
@@ -15,9 +14,12 @@ const YForm = (Comp) => {
 		}
 		
 		handleChange = (e) => {
-			// 7. name就是
+			// 7. 
 			const { name, value } = e.target
 			// 11. 尝试打印验证正确性
+			// console.log(e.target)
+				// 输出：
+				// < input class="ant-input" type = "text" name = "uname" value = "e" >
 			console.log(name, value)
 			this.setState({ [name]: value }, () => {
 				// 12. 对写进来的字段进行校验：
@@ -66,7 +68,7 @@ const YForm = (Comp) => {
 			callback(allResult, this.state)
 		}
 
-	// 2. 创建Input包装的函数：
+	// 2. 创建Input包装的函数：从Rewrite里传来的两个值，
 		getFiledDecorator = (field, option) => {
 			// 3. 保存当前输入项的配置rules
 			this.options[field] = option
@@ -91,7 +93,7 @@ const YForm = (Comp) => {
 		)
 	}
 		render() {
-			// 8. 把getFiledDecorator挂载在<Comp>组件上，才能在父类中使用
+			// 8. 把getFiledDecorator挂载在<Comp>组件上，才能在调用处子类Rewrite中起作用
 			return (<Comp getFiledDecorator={this.getFiledDecorator}
 				// 23. 把validate挂载在Comp上
 				validate={this.validate}>
@@ -116,7 +118,7 @@ class Rewirte extends Component {
 		})
 	}
 	render() {
-		// 9. 把getFiledDecorator结构出来：
+		// 9. 把getFiledDecorator解构出来：
 		const {getFiledDecorator} = this.props
 		return (
 			<div>
