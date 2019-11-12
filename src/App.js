@@ -15,10 +15,13 @@ import WrappedNormalLoginForm from './components/12AntdForm'
 import MockAntdForm from './components/12MockAntdFormComponent'
 import Rewirte from './components/12rewirte'
 
-import ReduxDemo from './components/13Redux'
-// 全局使用Provider：
+// 8.全局使用Provider：
 import { Provider } from 'react-redux'
-import store from './store/store'
+import store from './components/13BaseReduxStore'
+import BaseRedux from './components/13BaseRedux'
+import BaseRedux02 from './components/13BaseRedux02'
+// 12.3
+import store02 from './components/13BaseReduxStore02'
 
 
 // const formatName = (user) => {
@@ -89,8 +92,17 @@ export default class App extends Component {
         {/* <Rewirte></Rewirte> */}
 
         {/* Redux */}
-        <Provider store={store}>
-          <ReduxDemo></ReduxDemo>
+        {/* <BaseRedux></BaseRedux> */}
+        {/* 8. 全局使用Provider,使用context上下文进行传值： */}
+        {/* <Provider store={store}>
+          <BaseRedux></BaseRedux>
+        </Provider> */}
+        {/* 12. redux中间件： */}
+        {/* <Provider store={store02}>
+          <BaseRedux02></BaseRedux02>
+        </Provider> */}
+        <Provider store={store02}>
+          <BaseRedux02></BaseRedux02>
         </Provider>
       </div>
     )
