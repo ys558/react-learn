@@ -23,6 +23,10 @@ import BaseRedux02 from './components/13BaseRedux02'
 // 12.3
 import store02 from './components/13BaseReduxStore02'
 
+import ReactRouter from './components/15reactRouter'
+
+
+
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -101,9 +105,14 @@ export default class App extends Component {
         {/* <Provider store={store02}>
           <BaseRedux02></BaseRedux02>
         </Provider> */}
+
+        {/* 路由 */}
+        {/* <ReactRouter></ReactRouter> */}
+        {/* 路由结合redux做登录页面 */}
         <Provider store={store02}>
-          <BaseRedux02></BaseRedux02>
+          <ReactRouter></ReactRouter>
         </Provider>
+        
       </div>
     )
   }

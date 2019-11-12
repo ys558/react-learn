@@ -4,22 +4,18 @@
  * 	12.1 npm i --save redux-thunk redux-logger
  *  12.2 见src\components\13BaseRedux02.jsx注释
  *  12.3 做异步操作：
- * 
+ *  12.4 
  */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+// 12.4 改写原来的mapDispatchToProps
+import {plus, minus, asyncPlus} from '../store/counter.redux'
 
 const mapStateToProps = state => ({num: state})
-const mapDispatchToProps = {
-	plus: () => ({ type: 'plus'}),
-    minus: () => ({ type: 'minus'}),
-    asyncPlus: () => dispatch => {
-        // 12.3 模拟异步调用：
-        setTimeout(()=>{
-            dispatch({type: 'plus'})
-        },900)
-    }
-}
+// 12.4 改写原来的mapDispatchToProps
+const mapDispatchToProps = { plus, minus, asyncPlus }
+
+// connect(映射state状态，映射dispatch方法)(要执行的函数或类组件)
 @connect( mapStateToProps, mapDispatchToProps )
 class BaseRedux02 extends Component {
 	render(){
