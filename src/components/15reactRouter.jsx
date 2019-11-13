@@ -53,6 +53,12 @@ function About () {
 	</div>)
 }
 
+// 6.
+const NoMatch = ({location}) =>{
+	return (<div>
+		404,{'  '}{location.pathname}不存在
+	</div>)
+}
 // 传递进来的props是路由器对象：
 const Detail = (props) => {
 	console.log(props)
@@ -93,12 +99,6 @@ const Detail = (props) => {
 	</div>)
 }
 
-// 6.
-const NoMatch = ({location}) =>{
-	return (<div>
-		404,{'  '}{location.pathname}不存在
-	</div>)
-}
 
 // 10. 路由守卫：将普通的传递进来的<Route>封装成可以做校验功能的<Route>
 // 希望在组件中的用法：<PrivateRoute component={About} path="/about" ...>
@@ -107,7 +107,9 @@ const NoMatch = ({location}) =>{
 // 其余属性用...rest接收
 // 11.5 用connect改写，使其连接redux：
 const PrivateRoute = connect(
-  state => {state.user.isLogin}
+	// !!!!!这里两种写法都可以，一定要加上return，或者用()
+  // state => ({ isLogin:state.user.isLogin})
+  state => {return {isLogin:state.user.isLogin}}
 )(
 ({component: Comp, isLogin, ...rest}) => {
   return(
@@ -149,7 +151,9 @@ const Login = connect(
       <div>
         <p>用户登录</p>
         <hr/>
-        <button onClick={login} disabled={loading}>登录</button>
+				<button onClick={login} disabled={loading}>
+					{loading ? "登录中...": '登录'}
+				</button>
       </div>
     )
   }

@@ -25,9 +25,9 @@ export const user = (state = initialState, action) => {
 // 11.3 action creator
 export const login = () => dispatch => {
   // 请求登录：标识正在登录中，等待结果
-  dispatch({ type: 'requestLogin' })
+  dispatch({ type: 'requestLogin' });
   setTimeout(()=>{
     // 异步请求回来后，请求回的login结果
-    dispatch({ type: 'login' })
+    dispatch({ type: 'login' });
   }, 2000)
 }
