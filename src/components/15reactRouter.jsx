@@ -85,7 +85,7 @@ const Detail = (props) => {
 		// state: undefined
 		// __proto__: Object
 		
-		// 3. match: 获取参数信息
+		// 3. match: 获取参数信息, 如match.params
 			// isExact: true
 			// params: {course: "web"}
 			// path: "/detail/:course"
@@ -115,12 +115,20 @@ const PrivateRoute = connect(
 	// isLogin是自己添加的，判断是否能登录的条件
 	// 其余不重要的参数用...rest接收
 ({component: Comp, isLogin, ...rest}) => {
+  // ！！！ 这里定义具名Comp目的是，react写自定义组件时，必须采用大写<Comp/>
+  // console.log(Comp)
+  // ƒ About() {
+  // return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  //   __source: {
+  //     fileName: _jsxFileName,
+  //     lineNumber: 40
+  //   },
+  //   __self: this
+  // }, react__WEBPACK_I…
   return(
-    // render:根据条件动态渲染组件：
+    // render:根据条件动态加载组件：
     <Route {...rest} render={
-      props => isLogin ?
-        <Comp/>
-        : 
+      props => isLogin ?  <Comp/> :
         <Redirect to={{
           pathname: "/login", 
           // 10.2 登录成功后去的地址：
@@ -145,6 +153,9 @@ const Login = connect(
   ({location, isLogin, login, loading }) => {
     // 10.2 登录成功后去的地址：
     const redirectUrl = location.state.redirect || '/';
+    // console.log(redirectUrl)
+    // 控制台：/about/me
+
     // 10.3 如果已经登录，则去地址：redirect
     if (isLogin) {
       return <Redirect to={redirectUrl}/>

@@ -21,10 +21,12 @@ import store from './components/13BaseReduxStore'
 import BaseRedux from './components/13BaseRedux'
 import BaseRedux02 from './components/13BaseRedux02'
 // 12.3
-import store02 from './components/13BaseReduxStore02'
+// import store02 from './components/13BaseReduxStore02'
 
-import ReactRouter from './components/15reactRouter'
-import store03 from './store/index'
+// import ReactRouter from './components/15reactRouter'
+// import store03 from './store/index'
+import ReduxSaga from './components/16ReduxSaga'
+import storeWithSaga from './store/index2'
 
 
 
@@ -110,10 +112,14 @@ export default class App extends Component {
         {/* 路由 */}
         {/* <ReactRouter></ReactRouter> */}
         {/* 路由结合redux做登录页面 */}
-        <Provider store={store03}>
+        {/* <Provider store={store03}>
           <ReactRouter></ReactRouter>
+        </Provider> */}
+
+        {/* saga umi */}
+        <Provider store={storeWithSaga}>
+          <ReduxSaga></ReduxSaga>
         </Provider>
-        
       </div>
     )
   }
