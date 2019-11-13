@@ -107,13 +107,15 @@ const Detail = (props) => {
 // 其余属性用...rest接收
 // 11.5 用connect改写，使其连接redux：
 const PrivateRoute = connect(
-	// !!!!!这里两种写法都可以，一定要加上return，或者用()
-  // state => ({ isLogin:state.user.isLogin})
-  state => {return {isLogin:state.user.isLogin}}
+	// !!!!!箭头函数除了return，也可用圆括号()
+  // state => {return {isLogin:state.user.isLogin}}
+  state => ({ isLogin:state.user.isLogin })
 )(
+	// 这里的component相当于<Route path="/about" component={About} />里的component={About}，即About组件
+	// isLogin是自己添加的，判断是否能登录的条件
+	// 其余不重要的参数用...rest接收
 ({component: Comp, isLogin, ...rest}) => {
   return(
-    // 根据isLogin做认证：
     // render:根据条件动态渲染组件：
     <Route {...rest} render={
       props => isLogin ?
