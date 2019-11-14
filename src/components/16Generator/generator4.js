@@ -34,9 +34,7 @@ function next(data) {
 
   if (!done) {
     // 直到返回了结果,才继续执行下一条语句:
-    value.then( 
-    num => next(num)
-  )}
+    value.then( num => next(num) )}
 }
 
 next();

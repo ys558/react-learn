@@ -87,7 +87,7 @@ export default class App extends Component {
         {/* <HigherOrderComponent></HigherOrderComponent> */}
 
         {/* 09. Composition 复合组件 */}
-        {/* <Composition></Composition> */}
+        <Composition></Composition>
         
         {/* Hook */}
         {/* <Hook></Hook> */}
