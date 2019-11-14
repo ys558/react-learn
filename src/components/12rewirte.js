@@ -20,14 +20,14 @@ const YForm = (Comp) => {
 			// console.log(e.target)
 				// 输出：
 				// < input class="ant-input" type = "text" name = "uname" value = "e" >
-			console.log(name, value)
+			// console.log(name, value)
 			this.setState({ [name]: value }, () => {
 				// 12. 对写进来的字段进行校验：
 				// setState里的回调函数：确保值发送变化后再进行校验：
 				this.validateField(name)
 			})
 		}
- 
+
 		// 12. 
 		validateField = (field) => {
 			// 13. 获取校验规则：getFiledDecorator里保存的this.options[field] = option
