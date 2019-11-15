@@ -89,9 +89,9 @@ export default class CartSample extends Component {
                     {/* 方法1： */}
                     {/* {title} */}
                     
-                    {/* 方法2：短路逻辑 */}
                     {/* { this.props.title ? <h2>{this.props.title}</h2> : null} */}
                     {/* 或 */}
+                    {/* 方法2：短路逻辑，只有当两个条件均满足时，才会出现在页面上： */}
                     { this.props.title && <h2>{this.props.title}</h2>}
 
                     {/* 列表渲染 */}

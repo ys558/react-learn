@@ -20,7 +20,7 @@ function About () {
 		<div>
 			<Link to="/about/me">个人信息</Link>{' | '}
 			<Link to="/about/order">订单信息</Link>
-		</div>
+    </div>
 		<Switch>
 			<Route path="/about/me" component={()=> <div>Me</div>}/>
 			<Route path="/about/order" component={()=> <div>Order</div>}/>
@@ -29,16 +29,17 @@ function About () {
 	</div>)
 }
 
+// {location}是直接解构默认传过来的props里的属性
 const NoMatch = ({location}) =>{
 	return (<div>
 		404,{'  '}{location.pathname}不存在
 	</div>)
 }
-const Detail = (props) => {
+const Detail = ({match, history}) => {
 	return (<div>
-		当前课程：{props.match.params.course} <br/>
+		当前课程：{match.params.course} <br/>
 		{/* 1. history：导航指令history.back() */}
-		<button onClick={props.history.goBack}>后退</button>
+		<button onClick={history.goBack}>后退</button>
 	</div>)
 }
 
@@ -102,7 +103,6 @@ export default function ReduxSaga() {
 						<Link to="/">首页</Link>{' | '}
 						<Link to="/about">关于</Link>
 					</div>
-
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/detail/:course" component={Detail} />
