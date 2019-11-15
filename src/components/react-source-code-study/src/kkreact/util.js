@@ -118,6 +118,8 @@ export function setProps(elem, props, isCustomComponent) {
     }
 }
 
+// 12.4.1.1 具体打补丁的方法: 但仍不是具体的dom操作, 会出补丁包, 即一些js对象包, 
+// 告诉应该怎么操作这些旧dom去更新为新dom, 用一些具体的patch包
 export function patchProps(elem, props, newProps, isCustomComponent) {
     var isSelect = elem.nodeName === 'SELECT'
     for (let key in props) {

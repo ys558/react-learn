@@ -43,24 +43,30 @@ export function initVnode(vnode, parentContext) {
     return node
 }
 
+// 12.
 function updateVnode(vnode, newVnode, node, parentContext) {
     let { vtype } = vnode
 
+    // 12.1 class类型组件:
     if (vtype === VCOMPONENT) {
         return updateVcomponent(vnode, newVnode, node, parentContext)
     }
 
+    // 12.2 fn类型组件:
     if (vtype === VSTATELESS) {
         return updateVstateless(vnode, newVnode, node, parentContext)
     }
 
+    // 12.3 如果有其他类型例如注释,则直接忽略:
     // ignore VCOMMENT and other vtypes
     if (vtype !== VELEMENT) {
         return node
     }
 
+    // 12.4 原生html标签: 底层最终比较:
     let oldHtml = vnode.props[HTML_KEY] && vnode.props[HTML_KEY].__html
     if (oldHtml != null) {
+        // 12.4.1 !!!!!比较
         updateVelem(vnode, newVnode, node, parentContext)
         initVchildren(newVnode, node, parentContext)
     } else {
@@ -300,8 +306,10 @@ function diffVchildren(patches, vnode, newVnode, node, parentContext) {
     patches.updates.push(updates)
 }
 
+// 12.4.1 
 function updateVelem(velem, newVelem, node) {
     let isCustomComponent = velem.type.indexOf('-') >= 0 || velem.props.is != null
+    // 12.4.1.1 将新的元素打补丁:
     _.patchProps(node, velem.props, newVelem.props, isCustomComponent)
     if (velem.ref !== newVelem.ref) {
         detachRef(velem.refs, velem.ref, node)
@@ -333,7 +341,9 @@ function updateVstateless(vstateless, newVstateless, node, parentContext) {
     let uid = vstateless.uid
     let vnode = node.cache[uid]
     delete node.cache[uid]
+    // 算出虚拟dom:
     let newVnode = renderVstateless(newVstateless, parentContext)
+    // 再对比:两个节点:
     let newNode = compareTwoVnodes(vnode, newVnode, node, parentContext)
     newNode.cache = newNode.cache || {}
     newNode.cache[newVstateless.uid] = newVnode
@@ -399,6 +409,7 @@ function initVcomponent(vcomponent, parentContext) {
     return node
 }
 
+// 13. 
 function updateVcomponent(vcomponent, newVcomponent, node, parentContext) {
     // 更新组件
     let uid = vcomponent.uid
@@ -516,19 +527,30 @@ export function clearPending() {
     clearPendingComponents()
 }
 
+// 12. !!!!!!!!!!diff算法: 比较新旧虚拟节点:
 export function compareTwoVnodes(vnode, newVnode, node, parentContext) {
+    // 定义一个newVnode变量, 绑定传进来的节点:
     let newNode = node
+    // 如果node是空节点, 则直接进行删除操作:
     if (newVnode == null) {
         // remove
+        // 直接删除虚拟节点:
         destroyVnode(vnode, node)
+        // 把真实节点从父节点里删除:
         node.parentNode.removeChild(node)
+    // 如果类型或者key值不一样, 则直接进行替换操作:
     } else if (vnode.type !== newVnode.type || vnode.key !== newVnode.key) {
         // replace
+        // 删除虚拟节点:
         destroyVnode(vnode, node)
+        // 生成一个真实节点: initVnode()方法,详见:src/components/react-source-code-study/src/kvdom.js
         newNode = initVnode(newVnode, parentContext)
+        // 通过父节点进行替换操作:
         node.parentNode.replaceChild(newNode, node)
+    // 如果虚拟节点和真实节点不一样 则直接进行更新操作:
     } else if (vnode !== newVnode || parentContext) {
         // same type and same key -> update
+        // 相同类型和相同key, 则触发updateVnode()方法
         newNode = updateVnode(vnode, newVnode, node, parentContext)
     }
     return newNode
