@@ -27,6 +27,7 @@ import BaseRedux02 from './components/13BaseRedux02'
 // import store03 from './store/index'
 import ReduxSaga from './components/16ReduxSaga'
 import storeWithSaga from './store/index2'
+import ModalDemo from './components/ModalDemo'
 
 
 
@@ -93,7 +94,8 @@ export default class App extends Component {
         {/* <Hook></Hook> */}
 
         {/* 模拟antd创建UI组件： */}
-        {/* <MockAntdForm></MockAntdForm> */}
+        <MockAntdForm></MockAntdForm>
+        <hr/>
 
         {/* 重写一遍 */}
         {/* <Rewirte></Rewirte> */}
@@ -117,9 +119,10 @@ export default class App extends Component {
         </Provider> */}
 
         {/* saga umi */}
-        <Provider store={storeWithSaga}>
+        {/* <Provider store={storeWithSaga}>
           <ReduxSaga></ReduxSaga>
-        </Provider>
+        </Provider> */}
+        <ModalDemo></ModalDemo>
       </div>
     )
   }
