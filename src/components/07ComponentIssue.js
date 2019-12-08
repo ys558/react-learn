@@ -23,6 +23,7 @@ export default class ComponentIssue extends Component {
         return (
             <div>
             {this.state.comments.map((c, i) => (
+                // 0. 
                 // <Comment key={i} data={c} />
 
                 // 2. 优化办法二，这里不再传整个c对象：而将c直接展开用:
@@ -57,7 +58,9 @@ export default class ComponentIssue extends Component {
 //     shouldComponentUpdate(nextProps) {
 //         // 手动对比父组件传过来的comments: []里的内容所有变量，如果实际内容有更新，才重新渲染：返回false:
 //         // 这里的nextProps为改组件的状态，this.props为父组件状态。
-//         if (nextProps.data.body === this.props.data.body && nextProps.data.author === this.props.data.author) return false
+//         if (nextProps.data.body === this.props.data.body 
+//             && nextProps.data.author === this.props.data.author
+//             ) return false
         
 //         return true
 //     }

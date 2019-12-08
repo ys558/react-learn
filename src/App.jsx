@@ -15,9 +15,10 @@ import WrappedNormalLoginForm from './components/12AntdForm'
 import MockAntdForm from './components/12MockAntdFormComponent'
 import Rewirte from './components/12rewirte'
 
-// 8.全局使用Provider：
+// 13-02 react-redux
 import { Provider } from 'react-redux'
-import store from './components/13BaseReduxStore'
+
+
 import BaseRedux from './components/13BaseRedux'
 import BaseRedux02 from './components/13BaseRedux02'
 // 12.3
@@ -28,6 +29,9 @@ import BaseRedux02 from './components/13BaseRedux02'
 import ReduxSaga from './components/16ReduxSaga'
 import storeWithSaga from './store/index2'
 import ModalDemo from './components/ModalDemo'
+
+import SimpleRedux from './components/13-01simpleRedux'
+import ReactRedux from './components/13-02react-redux'
 
 
 
@@ -88,20 +92,30 @@ export default class App extends Component {
         {/* <HigherOrderComponent></HigherOrderComponent> */}
 
         {/* 09. Composition 复合组件 */}
-        <Composition></Composition>
+        {/* <Composition></Composition> */}
         
         {/* Hook */}
         {/* <Hook></Hook> */}
 
         {/* 模拟antd创建UI组件： */}
-        <MockAntdForm></MockAntdForm>
-        <hr/>
+        {/* <MockAntdForm></MockAntdForm> */}
+        {/* <hr/> */}
 
         {/* 重写一遍 */}
         {/* <Rewirte></Rewirte> */}
 
-        {/* Redux */}
+        {/* 13-01 simpleRedux */}
+        {/* <SimpleRedux></SimpleRedux> */}
+        {/* 13-02 react-redux */}
+          {/* react-redux库中Provider的引入 */}
+        <Provider store={store}>
+          <ReactRedux></ReactRedux>
+        </Provider>
+
+
+        {/* 13BaseRedux */}
         {/* <BaseRedux></BaseRedux> */}
+
         {/* 8. 全局使用Provider,使用context上下文进行传值： */}
         {/* <Provider store={store}>
           <BaseRedux></BaseRedux>
@@ -122,7 +136,8 @@ export default class App extends Component {
         {/* <Provider store={storeWithSaga}>
           <ReduxSaga></ReduxSaga>
         </Provider> */}
-        <ModalDemo></ModalDemo>
+
+        {/* <ModalDemo></ModalDemo> */}
       </div>
     )
   }
