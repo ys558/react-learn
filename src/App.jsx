@@ -94,8 +94,8 @@ export default class App extends Component {
         {/* <Hook></Hook> */}
 
         {/* 模拟antd创建UI组件： */}
-        <MockAntdForm></MockAntdForm>
-        <hr/>
+        {/* <MockAntdForm></MockAntdForm> */}
+        {/* <hr/> */}
 
         {/* 重写一遍 */}
         {/* <Rewirte></Rewirte> */}
@@ -122,7 +122,9 @@ export default class App extends Component {
         {/* <Provider store={storeWithSaga}>
           <ReduxSaga></ReduxSaga>
         </Provider> */}
-        <ModalDemo></ModalDemo>
+        {/* <ModalDemo></ModalDemo> */}
+
+        
       </div>
     )
   }
