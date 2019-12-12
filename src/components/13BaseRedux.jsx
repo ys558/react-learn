@@ -23,9 +23,6 @@ store.subscribe(()=>ReactDOM.render(<App />, document.getElementById('root')))
  * 9. 定义mapStateToProps，mapDispatchToProps。将组件里耦合的方法剥离，将抽离的东西解构放入组件
  * 10. 这里不再需要4.1逐个文件里导入import store from '../store/store'，取而代之的是{connect}
  * 11. 另一种：装饰器写法
- * 
- * 
- * 
  */
 import React, { Component } from 'react'
 // 10. 这里不再需要4.1逐个导入import store from '../store/store'，取而代之的是{connect}
