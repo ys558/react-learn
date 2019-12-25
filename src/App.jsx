@@ -33,7 +33,7 @@ import ModalDemo from './components/ModalDemo'
 import SimpleRedux from './components/13-01simpleRedux'
 import ReactRedux from './components/13-02react-redux'
 
-import InheritanceInversion from './components/09inheritanceInversion01'
+import IIandHijack from './components/09IIandHijack01'
 
 
 // const formatName = (user) => {
@@ -94,7 +94,7 @@ export default class App extends Component {
         {/* 09. Composition 复合组件 */}
         {/* <Composition></Composition> */}
         {/* 09. 反向继承 */}
-        <InheritanceInversion></InheritanceInversion>
+        <IIandHijack></IIandHijack>
         
         {/* Hook */}
         {/* <Hook></Hook> */}

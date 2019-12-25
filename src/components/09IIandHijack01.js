@@ -16,7 +16,7 @@ const iiHoc = Comp => class extends Comp {
 
 }
 
-// 扩展: hijack(劫持)渲染劫持高阶组件:
+// hijack(劫持)渲染劫持高阶组件:
 // (config)当做要传入的参数, 特意用括号括起; 
 const hijackRederHOC = (config) => Comp => class extends Comp {
   render() {
@@ -33,7 +33,7 @@ const hijackRederHOC = (config) => Comp => class extends Comp {
 
 @iiHoc
 @hijackRederHOC({ type: 'add-style', style: {backgroundColor: 'green'} })
-export default class InheritanceInversion extends PureComponent {
+export default class IIandHijack extends PureComponent {
   constructor() {
     super();
     this.state = {
