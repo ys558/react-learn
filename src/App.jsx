@@ -7,8 +7,9 @@ import CartSample from './components/04CartSample'
 import LifeCycle from './components/05LifeCycle'
 import AntDesignUI from './components/06AntDesignUI'
 import ComponentIssue from './components/07ComponentIssue'
-import HigherOrderComponent from './components/08HigherOrderComponent'
 import Composition from './components/09Composition'
+import Composition2 from './components/09Composition2'
+import Composition3 from './components/09Composition3_React_Children'
 import Hook from './components/10Hook'
 import Context from './components/11Context'
 import WrappedNormalLoginForm from './components/12AntdForm'
@@ -34,6 +35,9 @@ import SimpleRedux from './components/13-01simpleRedux'
 import ReactRedux from './components/13-02react-redux'
 
 import IIandHijack from './components/09IIandHijack01'
+import HOC from './components/08HOC'
+import HOC2 from './components/08HOC2'
+import HOC3 from './components/08HOC3-Decorators'
 
 
 // const formatName = (user) => {
@@ -85,16 +89,21 @@ export default class App extends Component {
         {/* 06. antd基础应用 */}
         {/* <AntDesignUI></AntDesignUI> */}
 
-        {/* 07. 组件化存在的问题 */}
+        {/* 07. 组件化存在的问题, 多次渲染 */}
         {/* <ComponentIssue></ComponentIssue> */}
 
         {/* 08. HOC 高阶组件*/}
-        {/* <HigherOrderComponent></HigherOrderComponent> */}
+        {/* <HOC></HOC> */}
+        {/* <HOC2></HOC2> */}
+        {/* <HOC3></HOC3> */}
 
         {/* 09. Composition 复合组件 */}
         {/* <Composition></Composition> */}
+        <Composition2></Composition2>
+        <Composition3></Composition3>
+
         {/* 09. 反向继承 */}
-        <IIandHijack></IIandHijack>
+        {/* <IIandHijack></IIandHijack> */}
         
         {/* Hook */}
         {/* <Hook></Hook> */}

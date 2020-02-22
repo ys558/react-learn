@@ -23,7 +23,7 @@ export default class ComponentIssue extends Component {
         return (
             <div>
             {this.state.comments.map((c, i) => (
-                // 0. 
+                // 0. c为父组件的整个对象
                 // <Comment key={i} data={c} />
 
                 // 2. 优化办法二，这里不再传整个c对象：而将c直接展开用:
@@ -36,53 +36,15 @@ export default class ComponentIssue extends Component {
 }
 
 
+/**
+	@传统class渲染存在的痛点
+		重复渲染
+ */
 // class Comment extends Component {
 //     render() {
-//         /*
-//         0. 控制台打印的render comment会一直不断的执行，尽管页面的内容没有发生改变
-//         class在其父组件发生更新时，子组件也一并会同时更新，会耗费过多性能
-//         解决办法见下面的123
-//         */ 
-//         console.log(`render comment`)
-//         return (
-//             <div>
-//             <p>{this.props.data.body}</p>
-//             <p> --- {this.props.data.author}</p>
-//             </div>
-//         );
-//     }
-// }
-
-// // 1. 优化办法一：v15.3之前，用shouldComponentUpdate生命周期阻止无用更新：
-// class Comment extends Component {
-//     shouldComponentUpdate(nextProps) {
-//         // 手动对比父组件传过来的comments: []里的内容所有变量，如果实际内容有更新，才重新渲染：返回false:
-//         // 这里的nextProps为改组件的状态，this.props为父组件状态。
-//         if (nextProps.data.body === this.props.data.body 
-//             && nextProps.data.author === this.props.data.author
-//             ) return false
-        
-//         return true
-//     }
-//     render() {
-//         console.log(`render comment`)
-//         return (
-//             <div>
-//             <p>{this.props.data.body}</p>
-//             <p> --- {this.props.data.author}</p>
-//             </div>
-//         );
-// }}
-
-
-// 2. 优化办法二：v15.3后，extends PureComponent，不再继承自普通Component, 组件会自行对比引用地址有没有发送变化，从而决定要不要重新渲染页面：
-/*
-！！！ 但这种有坑，由于其只 做了浅比较，不可能去比较数组里面的对象值，所以在父组件里
-传过来的属性c需要改动成{...c}，把各个元素拆解开来展示
-*/
-// class Comment extends PureComponent {
-//     render() {
-//         // 仅输出两次：正常
+// 				 //		0. 控制台打印的render comment会一直不断的执行，尽管页面的内容没有发生改变，class在其父组件发生更新时，
+// 				// 子组件也一并会同时更新，会耗费过多性能
+//        //解决办法见下面的123
 //         console.log(`render comment`)
 //         return (
 //             <div>
@@ -90,20 +52,67 @@ export default class ComponentIssue extends Component {
 //             <p> --- {this.props.author}</p>
 //             </div>
 //         );
+//     }
+// }
+
+/**
+	@优化办法一
+	v15.3之前, 用shouldComponentUpdate生命周期钩子阻止无用更新：
+ *  */ 
+// class Comment extends Component {
+// 	shouldComponentUpdate(nextProps) {
+// 		// 手动对比父组件传过来的comments: []里的内容所有变量，如果实际内容有更新，才重新渲染：返回false:
+// 		// 这里的nextProps为改组件的状态，this.props为父组件状态。
+// 		if (nextProps.body === this.props.body && nextProps.author === this.props.author) return false
+		
+// 		return true
+// 	}
+// 	render() {
+// 		// 这里就变成只打印两次：
+// 		console.log(`render comment`)
+// 		return (
+// 			<div>
+// 			<p>{this.props.body}</p>
+// 			<p> --- {this.props.author}</p>
+// 			</div>
+// 	);
 // }}
 
 
-// 3. 优化办法：React v16.6.0 之后的版本，可以使用 React.memo 让函数式的组件也有PureComponent的功能
-// React.memo是高阶组件（Higher-Order Component），即一个纯函数，接收一个组件，返回一个组件
+/**
+	@优化办法二
+	2. ：v15.3后，extends PureComponent，不再继承自普通Component, 组件会自行对比引用地址有没有发送变化，从而决定要不要重新渲染页面：	
+	@但这种方法也有坑
+	由于其只 做了浅比较，不可能去比较数组里面的对象值，所以在父组件里
+	传过来的属性c需要改动成{...c}，把各个元素拆解开来展示
+*/
+// class Comment extends PureComponent {
+//     render() {
+// 			// 仅输出两次：正常
+// 			console.log(`render comment`)
+// 			return (
+// 				<div>
+// 				<p>{this.props.body}</p>
+// 				<p> --- {this.props.author}</p>
+// 				</div>
+// 			);
+// }}
+
+
+/**
+ * @优化办法三
+ * React v16.6.0 之后的版本，可使用 React.memo() 让函数式的组件也有PureComponent的功能
+ * */ 
+// React.memo是高阶组件（Higher-Order Component），即一个函数，接收一个组件，返回一个组件
 // 类似于仅用于展示的function组件，这里面也不需要this：
-const Comment = React.memo((props) => {
-        // 仅输出两次：正常
-        console.log(`render comment`)
-        return (
-            <div>
-            <p>{props.body}</p>
-            <p> --- {props.author}</p>
-            </div>
-        )
-    }
+const Comment = React.memo(props => {
+		// 仅输出两次：正常
+		console.log(`render comment`)
+		return (
+			<div>
+				<p>{props.body}</p>
+				<p> --- {props.author}</p>
+			</div>
+		)
+	}
 )

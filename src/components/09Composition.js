@@ -1,103 +1,48 @@
 import React from 'react'
-
-function PropsChildrenNPropsShuxing(props) {
-    return <div>
-        <h2>{props.children}</h2>
-        <h2>{props.hehe}</h2>
-    </div>
+/**
+ * @复合组件
+ * @属性和Children
+ * 
+ */
+function ChildrenAndProps(props) {
+	return <div>
+		<h2>{props.children}</h2>
+		<h2>{props.hehe}</h2>
+	</div>
 }
 
-function Dialog(props) {
-    return <div style={{ border: `4px solid ${props.color || 'blue'}` }}>
-        {props.children}
-        <footer>
-            {props.footer}
-        </footer>
-    </div>
+// 2. 只提供样式的Dialog： 
+const Dialog = props => 
+// 2.1 这里的props.color用<WelcomDialog/>里的color="green"
+<div style={{ border: `4px solid ${props.color || 'blue' }` }}>
+	{props.children}
+	{/* 2.2 这里的footer用<WelcomDialog/>里的footer={footer} */}
+	<div className="footer">
+		{props.footer}
+	</div>
+</div>
+// 2. 只提供内容的WelcomDialog
+const WelcomDialog = props => {
+	return (
+		<Dialog {...props}>
+			<h1>欢饮光临</h1>
+			<p>感谢使用react</p>
+		</Dialog>
+	)
 }
-
-
-function WelcomDialog(props) {
-    return (
-        <Dialog {...props}>
-            <h1>欢饮光临</h1>
-            <p>感谢使用react</p>
-        </Dialog>
-    )
-}
-
-
-const Api = {
-    getUser() {
-        return { name: 'hehe', age: 20 }
-    }
-}
-
-function Fetcher(props) {
-    const user = Api[props.name]();
-    return props.children(user)
-}
-
-function Filter({ children, type }) {
-    return (
-        <div>
-            {/* 5.2 React官方提供的：React.Children */}
-            {React.Children.map(children, child => child.type == type ? child : null)}
-        </div>
-    )
-}
-
-function RadioGrop(props) {
-    return (
-        <div>
-            {React.Children.map(props.children, child => {
-                return React.cloneElement(child, { name: props.name })
-            })}
-        </div>)
-}
-
-function Radio({ children, ...rest }) {
-    return (
-        <label>
-            <input type="radio" {...rest} />
-            {children}
-        </label>
-    )
-}
-
 
 export default class Composition extends React.Component {
-    render() {
-        const footer = <button onClick={() => alert(`comfirm`)}>从父组件传来的属性，一个按钮</button>
-        return <div>
-            <PropsChildrenNPropsShuxing hehe="我是<PropsChildrenNPropsShuxing></PropsChildrenNPropsShuxing>上的hehe属性">
-                <p>我是PropsChildrenNPropsShuxing组件包着的标签及内容，在子组件里用props.children拿到</p>
-            </PropsChildrenNPropsShuxing>
-
-            <WelcomDialog color="green" footer={footer} />
-
-            <Fetcher name="getUser">
-                {/*5.1.1 ({name, age})在这里预先做展开  */}
-                {({ name, age }) => (
-                    <p>{name} ----- {age}</p>
-                )}
-            </Fetcher>
-
-            <Filter type="p">
-                <h1>React</h1>
-                <p>React 不错</p>
-                <h1>Vue</h1>
-                <p>Vue 不错</p>
-            </Filter>
-
-            <RadioGrop name="mvvm">
-                <Radio value="vue">vue</Radio>
-                <Radio value="react">react</Radio>
-                <Radio value="angular">angular</Radio>
-            </RadioGrop>
-
-            <hr />
-
-        </div>
-    }
+	render() {
+		// 2.2 footer
+		const footer = <button onClick={() => alert(`confirm`)}>click</button>
+		return <div>
+			{/* 1. */}
+			<ChildrenAndProps hehe="我是<ChildrenAndProps></ChildrenAndProps>上的hehe属性, 用'props.属性名'拿到 即props.hehe">
+					<p>我是ChildrenAndProps组件包着的标签及内容，在子组件里用props.children拿到</p>
+			</ChildrenAndProps>
+			
+			{/* 2. WelcomDialog为一个复合组件：*/}
+			<WelcomDialog color="green" footer={footer} />
+		</div>
+	}
 }
