@@ -10,7 +10,11 @@ import ComponentIssue from './components/07ComponentIssue'
 import Composition from './components/09Composition'
 import Composition2 from './components/09Composition2'
 import Composition3 from './components/09Composition3_React_Children'
-import Hook from './components/10Hook'
+import HookUseState from './components/10Hook01_useState'
+import HookUseEffect from './components/10Hook02_useEffect'
+import HookUseReducer from './components/10Hook03_useReducer'
+import HookUseContext from './components/10Hook04_useContext'
+
 import Context from './components/11Context'
 import WrappedNormalLoginForm from './components/12AntdForm'
 import MockAntdForm from './components/12MockAntdFormComponent'
@@ -34,7 +38,7 @@ import ModalDemo from './components/ModalDemo'
 import SimpleRedux from './components/13-01simpleRedux'
 import ReactRedux from './components/13-02react-redux'
 
-import IIandHijack from './components/09IIandHijack01'
+import ParentComponent from './components/09Inheritance-Inversion-super.render'
 import HOC from './components/08HOC'
 import HOC2 from './components/08HOC2'
 import HOC3 from './components/08HOC3-Decorators'
@@ -99,14 +103,17 @@ export default class App extends Component {
 
         {/* 09. Composition 复合组件 */}
         {/* <Composition></Composition> */}
-        <Composition2></Composition2>
-        <Composition3></Composition3>
+        {/* <Composition2></Composition2> */}
+        {/* <Composition3></Composition3> */}
 
         {/* 09. 反向继承 */}
-        {/* <IIandHijack></IIandHijack> */}
+        {/* <ParentComponent></ParentComponent> */}
         
         {/* Hook */}
-        {/* <Hook></Hook> */}
+        {/* <HookUseState></HookUseState> */}
+        {/* <HookUseEffect></HookUseEffect> */}
+        {/* <HookUseReducer></HookUseReducer> */}
+        <HookUseContext></HookUseContext>
 
         {/* 模拟antd创建UI组件： */}
         {/* <MockAntdForm></MockAntdForm> */}
