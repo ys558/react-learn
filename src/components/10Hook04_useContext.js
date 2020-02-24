@@ -2,6 +2,8 @@ import React, { useState, useEffect, useReducer, useContext }from 'react'
 /**
  * @useContext
  * 在函数组件中导入上下文。
+ * @自定义钩子
+ * https://zh-hans.reactjs.org/docs/hooks-custom.html
  */
 //1. 创建上下文：
 const Context = React.createContext();

@@ -1,6 +1,7 @@
 import React, { useState, useEffect }from 'react'
 /**
  * @useEffect副作用钩子
+ * 数据获取，设置订阅以及手动更改 React 组件中的 DOM 都属于副作用。
  * ！！使用注意点
  * 函数式组件中异步操作，定时器，dom操作等需要用到副作用钩子
  */

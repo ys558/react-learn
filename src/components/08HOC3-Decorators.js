@@ -12,7 +12,7 @@ const Kkb = props => <div>{props.stage}--{props.name}</div>
 const KkbWithName = Comp => {
 	const api = 'HOC课程3'
 	return class extends React.Component{
-		componentDidMount(){ console.log('do sth. 3') }
+		// componentDidMount(){ console.log('do sth. 3') }
 		render(){
 			return <Comp {...this.props} name={api} ></Comp>
 		}

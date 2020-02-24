@@ -38,10 +38,15 @@ import ModalDemo from './components/ModalDemo'
 import SimpleRedux from './components/13-01simpleRedux'
 import ReactRedux from './components/13-02react-redux'
 
-import ParentComponent from './components/09Inheritance-Inversion-super.render'
 import HOC from './components/08HOC'
 import HOC2 from './components/08HOC2'
 import HOC3 from './components/08HOC3-Decorators'
+import {HOC4} from './components/08HOC4'
+import PropsRender from './components/08PropsRender'
+
+import {Input} from './components/10HOC-Hook-PropsRender-Composition-Demo/10Hook06-HOC-PropsRender-Hook-demo'
+
+import ProviderConsumer from './components/07Context'
 
 
 // const formatName = (user) => {
@@ -62,6 +67,8 @@ export default class App extends Component {
     // const name = 'jerry'
     // const user = { firstName: `tom`, lastName: `jerry` }
     // const jsx = <p>hello, jerry</p>
+
+
     return (
       <div>
         {/* <h3>React Course</h3> */}
@@ -95,25 +102,35 @@ export default class App extends Component {
 
         {/* 07. 组件化存在的问题, 多次渲染 */}
         {/* <ComponentIssue></ComponentIssue> */}
+        {/* 07. 跨代传值Context */}
+        <ProviderConsumer></ProviderConsumer>
 
-        {/* 08. HOC 高阶组件*/}
+        {/* 08. HOC 高阶组件及propsRender组件互调使用 */}
+        {/* <PropsRender></PropsRender> */}
         {/* <HOC></HOC> */}
         {/* <HOC2></HOC2> */}
         {/* <HOC3></HOC3> */}
+        <HOC4></HOC4>
 
         {/* 09. Composition 复合组件 */}
         {/* <Composition></Composition> */}
         {/* <Composition2></Composition2> */}
+        {/* 09. 反向继承 */}
         {/* <Composition3></Composition3> */}
 
-        {/* 09. 反向继承 */}
-        {/* <ParentComponent></ParentComponent> */}
         
-        {/* Hook */}
+        {/* 10. Hook */}
         {/* <HookUseState></HookUseState> */}
         {/* <HookUseEffect></HookUseEffect> */}
         {/* <HookUseReducer></HookUseReducer> */}
-        <HookUseContext></HookUseContext>
+        {/* <HookUseContext></HookUseContext> */}
+
+        {/* 10. Demo of HOC */}
+        <Input
+          initialValue="init"
+          onChange={e => console.log("Input", e.target.value)}
+        />
+        {/* <HocInput/> */}
 
         {/* 模拟antd创建UI组件： */}
         {/* <MockAntdForm></MockAntdForm> */}
