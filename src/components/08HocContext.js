@@ -26,11 +26,13 @@ export default class ProviderConsumer extends Component {
 // 写法1:
 // const Child = ({plus, counter})=> <div onClick={()=>plus()}>{counter}</div>
 
-// 写法2: 用
-const withConsumer = (Consumer) => {
-  Comp => props => <Consumer>{value => <Comp {...value}></Comp>}</Consumer>
-}
+// 写法2: 用withConsumer强化Child组件
+const withConsumer = (Consumer) => 
+  Comp =>  props => <Consumer>{value => <Comp {...value}></Comp>}</Consumer>
 
+
+// 如果是遇到需要强化<>{xxx}</>类型的组件,
 const Child = withConsumer(Consumer)(
+  // 这里相当于传进来的组件,即withConsumer(Consumer)中的Consumer
   ({plus, counter})=> <div onClick={()=>plus()}>{counter}</div>
 )

@@ -16,6 +16,6 @@ const CourseRec = ({stage, title}) => <div>{`${stage}--${title}`}</div>
 const Course = CtxFroCourseApi(CourseRec)
 
 // 根组件:
-export const HOC4 = () => <>
+export default () => <>
   {['','',''].map((item,index)=> <Course key={index} index={index}/>)}
   </>
