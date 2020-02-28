@@ -36,7 +36,6 @@ import storeWithSaga from './store/index2'
 import ModalDemo from './components/ModalDemo'
 
 import SimpleRedux from './components/13-01simpleRedux'
-import ReactRedux from './components/13-02react-redux'
 
 import HOC from './components/08HOC'
 import HOC2 from './components/08HOC2'
@@ -44,11 +43,11 @@ import HOC3 from './components/08HOC3-Decorators'
 import HOC4 from './components/08HOC4'
 import PropsRender from './components/08PropsRender'
 
-import {Input} from './components/10HOC-Hook-PropsRender-Composition-Demo/10Hook06-HOC-PropsRender-Hook-demo'
-
 import ProviderConsumer from './components/07Context'
 import HocContext from './components/08HocContext'
 
+import BaseReduxModulization from './components/13BaseReduxModulization'
+import MyReduxTest from './components/14MyReduxTest'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -56,12 +55,12 @@ import HocContext from './components/08HocContext'
 export default class App extends Component {
   // 演示组件生命周期：
   state = { prop: 'some prop' }
-  componentDidMount(){
-    this.setState({prop: 'new prop'})
-    setTimeout(()=>{
-      this.setState({prop: '' })
-    }, 3000)
-  }
+  // componentDidMount(){
+  //   this.setState({prop: 'new prop'})
+  //   setTimeout(()=>{
+  //     this.setState({prop: '' })
+  //   }, 3000)
+  // }
 
 
   render() {
@@ -112,7 +111,7 @@ export default class App extends Component {
         {/* <HOC2></HOC2> */}
         {/* <HOC3></HOC3> */}
         {/* <HOC4></HOC4> */}
-        <HocContext></HocContext>
+        {/* <HocContext></HocContext> */}
 
         {/* 09. Composition 复合组件 */}
         {/* <Composition></Composition> */}
@@ -127,13 +126,6 @@ export default class App extends Component {
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
 
-        {/* 10. Demo of HOC */}
-        {/* <Input
-          initialValue="init"
-          onChange={e => console.log("Input", e.target.value)}
-        /> */}
-        {/* <HocInput/> */}
-
         {/* 模拟antd创建UI组件： */}
         {/* <MockAntdForm></MockAntdForm> */}
         {/* <hr/> */}
@@ -145,9 +137,7 @@ export default class App extends Component {
         {/* <SimpleRedux></SimpleRedux> */}
         {/* 13-02 react-redux */}
           {/* react-redux库中Provider的引入 */}
-        {/* <Provider store={store}>
-          <ReactRedux></ReactRedux>
-        </Provider> */}
+        {/* <Provider store={store}><ReactRedux></ReactRedux></Provider> */}
 
 
         {/* 13BaseRedux */}
@@ -157,10 +147,13 @@ export default class App extends Component {
         {/* <Provider store={store}>
           <BaseRedux></BaseRedux>
         </Provider> */}
-        {/* 12. redux中间件： */}
-        {/* <Provider store={store02}>
-          <BaseRedux02></BaseRedux02>
-        </Provider> */}
+        {/* 12. redux中间件和异步： */}
+        {/* <BaseRedux02></BaseRedux02> */}
+        {/* 13. redux模块化 */}
+        {/* <BaseReduxModulization></BaseReduxModulization> */}
+
+        {/* 14.redux源码实现 */}
+        <MyReduxTest></MyReduxTest>
 
         {/* 路由 */}
         {/* <ReactRouter></ReactRouter> */}
