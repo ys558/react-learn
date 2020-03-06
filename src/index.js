@@ -3,25 +3,28 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.jsx';
 import * as serviceWorker from './serviceWorker';
-// 对应src\components\13-01simpleRedux.jsx解开：
-// import store from './components/13-01store'
-import storeModulization from './components/13-modulizationStore'
+// 13.1
+import store  from './store/13.1store'
+// 13.2
+// import store from './store/13.2store'
+// import { Provider } from 'react-redux';
+// 13.3
+// import store from './store/13.3myStore'
 
-// src\components\13BaseRedux.jsx:
-import { Provider } from 'react-redux';
+//13.1 subscribe
+// ReactDOM.render(<App />, document.getElementById('root'))
+// store.subscribe(() => ReactDOM.render(<App />, document.getElementById('root')))
 
-ReactDOM.render(
-  // <Provider store={store}>
-  // 13.reduer模块化用下面的store, 13BaseReduxModulization.jsx
-  <Provider store={storeModulization}>
-    <App />
-  </Provider>
-  , 
-  document.getElementById('root'))
-// // 5.2 store.subscribe()启用ReactDOM.render()，如果一有状态更新，则立即更新ReactDOM.render()重新渲染页面
-
-// 13.5 subscribe
-// 对应src\components\13-01simpleRedux.jsx解开：
-// store.subscribe(()=>ReactDOM.render(<App />, document.getElementById('root')))
+//13.2 使用<Provider></Provider>上下文传参:
+// ReactDOM.render(
+//     <Provider store={store}>
+//       <App />
+//     </Provider>
+//     ,
+//     document.getElementById('root'))
+  
+// 13.3 subscribe的作用--订阅, 往store里塞若干函数,形成一个回调函数的数组:
+ReactDOM.render(<App />, document.getElementById('root'))
+store.subscribe(() => ReactDOM.render(<App />, document.getElementById('root')))
 
 serviceWorker.unregister();
