@@ -1,5 +1,7 @@
 import React from 'react'
-import store from '../store/13.3myStore'
+import store from '../store/13.4myStore'
+import {connect} from '../store/13.3store'
+
 
 export default class MyRedux extends React.Component {
   render() {

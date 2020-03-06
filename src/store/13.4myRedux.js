@@ -59,13 +59,11 @@ export const applyMiddleware = (...middleware) => {
       dispatch: (...args) => dispatch(...args)
     }
     const chain = middleware.map(mw => mw(mwApi))
-    console.log(middleware)
-    // [ƒ]
+    // console.log(middleware)
+    // [ƒ, ƒ]
       // 0: ({ dispatch, getState }) => {…}
-      // arguments: (...)
-      // caller: (...)
-      // length: 1
-      // name: "logger"
+      // 1: ({ dispatch, getState }) => {…}
+      // length: 2
 
     // 强化dispatch,让他按顺序执行中间件函数:
     // 函数复合: 将数组里的所有函数变成一个函数执行:
@@ -73,7 +71,6 @@ export const applyMiddleware = (...middleware) => {
     // 返回全新的store和强化过的dispatch
     return { ...store, dispatch }
   }
-
 }
 
 export const compose = (...fncs) => {

@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, logger, thunk } from './13.3myRedux'
+import { createStore, applyMiddleware, logger, thunk } from './13.4myRedux'
 
 const counterReducer = (state=0, action) => {
   const num = action.payload || 1

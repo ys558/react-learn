@@ -1,4 +1,9 @@
 import React from 'react'
+/**
+ * 13.2 react-redux只提供两个api
+ * connect
+ * provider
+ */
 import { connect } from 'react-redux'
 
 const mapStateToProps = state => ({num: state})
