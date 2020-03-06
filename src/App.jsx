@@ -24,8 +24,6 @@ import Rewirte from './components/12rewirte'
 import { Provider } from 'react-redux'
 
 
-import BaseRedux from './components/13BaseRedux'
-import BaseRedux02 from './components/13BaseRedux02'
 // 12.3
 // import store02 from './components/13BaseReduxStore02'
 
@@ -35,7 +33,6 @@ import ReduxSaga from './components/16ReduxSaga'
 import storeWithSaga from './store/index2'
 import ModalDemo from './components/ModalDemo'
 
-import SimpleRedux from './components/13-01simpleRedux'
 
 import HOC from './components/08HOC'
 import HOC2 from './components/08HOC2'
@@ -46,8 +43,10 @@ import PropsRender from './components/08PropsRender'
 import ProviderConsumer from './components/07Context'
 import HocContext from './components/08HocContext'
 
-import BaseReduxModulization from './components/13BaseReduxModulization'
-import MyReduxTest from './components/14MyReduxTest'
+// 13.
+import ReduxTest from './components/13.1ReduxTest';
+import ReduxMiddleWare from './components/13.2ReduxMiddleWare'
+import MyReduxUse from './components/13.3MyReduxUse';
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -133,27 +132,11 @@ export default class App extends Component {
         {/* 重写一遍 */}
         {/* <Rewirte></Rewirte> */}
 
-        {/* 13-01 simpleRedux */}
-        {/* <SimpleRedux></SimpleRedux> */}
-        {/* 13-02 react-redux */}
-          {/* react-redux库中Provider的引入 */}
-        {/* <Provider store={store}><ReactRedux></ReactRedux></Provider> */}
+        {/* 13. redux及源码: */}
+        {/* <ReduxTest/> */}
+        {/* <ReduxMiddleWare/> */}
+        <MyReduxUse/>
 
-
-        {/* 13BaseRedux */}
-        {/* <BaseRedux></BaseRedux> */}
-
-        {/* 8. 全局使用Provider,使用context上下文进行传值： */}
-        {/* <Provider store={store}>
-          <BaseRedux></BaseRedux>
-        </Provider> */}
-        {/* 12. redux中间件和异步： */}
-        {/* <BaseRedux02></BaseRedux02> */}
-        {/* 13. redux模块化 */}
-        {/* <BaseReduxModulization></BaseReduxModulization> */}
-
-        {/* 14.redux源码实现 */}
-        <MyReduxTest></MyReduxTest>
 
         {/* 路由 */}
         {/* <ReactRouter></ReactRouter> */}
