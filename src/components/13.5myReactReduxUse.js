@@ -1,7 +1,7 @@
-import React from 'react'
-import store from '../store/13.3myStore'
+import React, { Component } from 'react'
+import store from '../store/13.4myStore'
 
-export default class MyRedux extends React.Component {
+export default class MyReactRedux extends Component {
   render() {
     return (
       <div>

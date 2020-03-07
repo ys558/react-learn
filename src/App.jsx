@@ -46,7 +46,9 @@ import HocContext from './components/08HocContext'
 // 13.
 import ReduxTest from './components/13.1ReduxTest';
 import ReduxMiddleWare from './components/13.2ReduxMiddleWare'
-import MyReduxUse from './components/13.3MyReduxUse';
+import ReduxModulization from './components/13.3ReduxModulization'
+import MyReduxUse from './components/13.4MyReduxUse';
+import MyReactReduxUse from './components/13.5myReactReduxUse'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -135,7 +137,9 @@ export default class App extends Component {
         {/* 13. redux及源码: */}
         {/* <ReduxTest/> */}
         {/* <ReduxMiddleWare/> */}
-        <MyReduxUse/>
+        {/* <ReduxModulization/> */}
+        {/* <MyReduxUse/> */}
+        <MyReactReduxUse/>
 
 
         {/* 路由 */}

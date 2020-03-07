@@ -1,19 +1,12 @@
 import React from 'react'
-/**
- * 13.2 react-redux只提供两个api
- * connect
- * provider
- */
 import { connect } from 'react-redux'
-
-const mapStateToProps = state => ({num: state})
-const mapDispatchToProps = {
-  plus: num => ({type: 'PLUS', payload: num }),
-  minus: () => ({type:'MINUS'}),
-  syncPlus: () => dispatch => setTimeout(()=> dispatch({type: 'PLUS'}), 1000)
-}
+import { plus, minus, syncPlus } from '../store/13.3counter'
 
 
+@connect(
+  state => ({num: state}),
+  {plus, minus, syncPlus}
+)
 class ReduxMiddleWare extends React.Component {
   render() {
     return (
@@ -27,4 +20,4 @@ class ReduxMiddleWare extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReduxMiddleWare)
+export default ReduxMiddleWare
