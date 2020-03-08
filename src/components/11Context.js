@@ -6,28 +6,19 @@ Context.Provider
 Class.contextType
 Context.Consumer
 */ 
-import React, {useContext} from 'react'
+import React from 'react'
 
 // 1. 创建上下文：
 const MyContext = React.createContext()
 const { Provider, Consumer } = MyContext
 
+const Child = (props) => <div>
+			从最外层&lt;Provider /&gt;的value属性传过来的值：{props.foo}, <br/>
+			隔多少层都能传
+	</div>
 
-function Child(props) {
-    return (
-        <div>
-            从外层传过来的值：{props.foo} <br/>
-            隔多少层都能传
-        </div>
-    )
-}
-
-// 3. v16.8之后：利用钩子的方法拿到数据
-function Child2() {
-    // 直接钩子函数传入MyContext：
-    const hook = useContext(MyContext)
-    return <div>Child2: {hook.foo}</div>
-}
+// 3. v16.8之后：利用钩子的方法React.useContext()直接拿到数据
+const Child2 = () => <div> Child2: { React.useContext(MyContext).foo } </div>
 
 // 4. 使用class指定静态contextType
 class Child3 extends React.Component {
@@ -39,25 +30,23 @@ class Child3 extends React.Component {
 }
 
 export default function Context() {
-    return (
-        <div>
-            {/* 如果上面不用解构{Provider}，这里可以直接这样写： */}
-            {/* <MyContext.Provider></MyContext.Provider>   */}
-            <Provider value={{foo:'bar'}}>
-                <div>
-                    {/* 2. 利用Context.Consumer拿到Provider的值： */}
-                    <Consumer>
-                        {value => <Child {...value} />}
-                    </Consumer>
+	return (
+		<div>
+			<Provider value={{foo:'bar'}}>
+				<div>
+					{/* 2. 利用Context.Consumer拿到Provider的值： */}
+					<Consumer>
+						{value => <Child {...value} />}
+					</Consumer>
 
-                    {/* 3. 利用钩子的方法拿到数据 */}
-                    <Child2/>
+					{/* 3. 利用钩子的方法拿到数据 */}
+					<Child2/>
 
-                    {/* 4. 使用class指定静态contextType*/}
-                    <Child3/>
-                </div>
-            </Provider>
-        </div>
-    )
+					{/* 4. 使用class指定静态contextType*/}
+					<Child3/>
+				</div>
+			</Provider>
+		</div>
+	)
 }
 

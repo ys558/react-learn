@@ -111,8 +111,8 @@ export default class App extends Component {
         {/* 07. Ref */}
         {/* <Ref></Ref> */}
         {/* <CustomTextInput></CustomTextInput> */}
-        <ForwardRef></ForwardRef>
-        <ForwardRefInHOC></ForwardRefInHOC>
+        {/* <ForwardRef></ForwardRef> */}
+        {/* <ForwardRefInHOC></ForwardRefInHOC> */}
 
         {/* 08. HOC 高阶组件及propsRender组件互调使用 */}
         {/* <PropsRender></PropsRender> */}
@@ -136,6 +136,9 @@ export default class App extends Component {
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
 
+        {/* 11. 隔代传参Provider, Context */}
+        <Context></Context>
+
         {/* 模拟antd创建UI组件： */}
         {/* <MockAntdForm></MockAntdForm> */}
         {/* <hr/> */}
@@ -148,7 +151,7 @@ export default class App extends Component {
         {/* <ReduxMiddleWare/> */}
         {/* <ReduxModulization/> */}
         {/* <MyReduxUse/> */}
-        {/* <MyReactReduxUse/> */}
+        <MyReactReduxUse/>
 
 
         {/* 路由 */}
