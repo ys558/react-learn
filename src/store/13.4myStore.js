@@ -15,6 +15,7 @@ const counterReducer = (state=0, action) => {
 const asyncPlus = (dispatch, getState) => dispatch => {
   setTimeout(()=> dispatch({type: 'PLUS'}), 1000)
 }
+
 const store = createStore(counterReducer, applyMiddleware(logger, thunk))
 
 export default store;
