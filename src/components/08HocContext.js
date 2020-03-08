@@ -15,10 +15,14 @@ export default class ProviderConsumer extends Component {
   render() {
     return (
       <Provider value={{ counter: this.state.counter, plus: this.plus }}>
-        {/* 写法1: Consumer未封装, 直接使用 */}
-        {/* <Consumer>{value => <Child {...value}/>}</Consumer> */}
-        {/* 写法2: 将Consumer做进一步封装进Child里: */}
-        <Child/>
+        <div>
+          <div>
+            {/* 写法1: Consumer未封装, 直接使用 */}
+            {/* <Consumer>{value => <Child {...value}/>}</Consumer> */}
+            {/* 写法2: 将Consumer做进一步封装进Child里: */}
+            <Child/>
+          </div>
+        </div>
       </Provider>
     )
   }
@@ -28,11 +32,13 @@ export default class ProviderConsumer extends Component {
 
 // 写法2: 用withConsumer强化Child组件
 const withConsumer = (Consumer) => 
+  // props相当于下面的:
+  //(({plus, counter})=> <div onClick={()=>plus()}>{`click me${counter}`}</div>)
   Comp =>  props => <Consumer>{value => <Comp {...value}></Comp>}</Consumer>
 
 
 // 如果是遇到需要强化<>{xxx}</>类型的组件,
 const Child = withConsumer(Consumer)(
   // 这里相当于传进来的组件,即withConsumer(Consumer)中的Consumer
-  ({plus, counter})=> <div onClick={()=>plus()}>{counter}</div>
+  ({plus, counter})=> <div onClick={()=>plus()}>{`click me${counter}`}</div>
 )

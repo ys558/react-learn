@@ -38,6 +38,8 @@ import HOC from './components/08HOC'
 import HOC2 from './components/08HOC2'
 import HOC3 from './components/08HOC3-Decorators'
 import HOC4 from './components/08HOC4'
+import HOC5 from './components/08HOC5-Lifting-state-up'
+import { Ref, CustomTextInput, ForwardRef, ForwardRefInHOC } from './components/07Ref'
 import PropsRender from './components/08PropsRender'
 
 import ProviderConsumer from './components/07Context'
@@ -106,12 +108,19 @@ export default class App extends Component {
         {/* 07. 跨代传值Context */}
         {/* <ProviderConsumer></ProviderConsumer> */}
 
+        {/* 07. Ref */}
+        {/* <Ref></Ref> */}
+        {/* <CustomTextInput></CustomTextInput> */}
+        <ForwardRef></ForwardRef>
+        <ForwardRefInHOC></ForwardRefInHOC>
+
         {/* 08. HOC 高阶组件及propsRender组件互调使用 */}
         {/* <PropsRender></PropsRender> */}
         {/* <HOC></HOC> */}
         {/* <HOC2></HOC2> */}
         {/* <HOC3></HOC3> */}
         {/* <HOC4></HOC4> */}
+        {/* <HOC5></HOC5> */}
         {/* <HocContext></HocContext> */}
 
         {/* 09. Composition 复合组件 */}
@@ -139,7 +148,7 @@ export default class App extends Component {
         {/* <ReduxMiddleWare/> */}
         {/* <ReduxModulization/> */}
         {/* <MyReduxUse/> */}
-        <MyReactReduxUse/>
+        {/* <MyReactReduxUse/> */}
 
 
         {/* 路由 */}
