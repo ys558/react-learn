@@ -2,14 +2,17 @@
  * 1. npm i react-router-dom --save
  * 2. 官网：
  * https://reacttraining.com/react-router/web/guides/quick-start
- * 3. <Link>
- * 4. <Route >
- * 5. 动态传参
- * 6. <Switch>
- * 7. 404页面，匹配不到路由
+ * 3. <BrowserRouter></BrowserRouter> 根组件
+ * 4. <Link></Link>地址栏
+ * 5. <Route/>对应上面地址栏的产出对应的Component, 但不独占
+ * 6. <Switch></Switch> 用Switch进行路由匹配独占, 但必须把根'/'路由放在最后
+ * 		另一种方法: 直接在Route上加excact
+ * 7. 路由的参数及动态传参: {match, history, location}
  * 8. 路由嵌套结构
  * 9. Redirect
- * 10. 路由守卫：将普通的传递进来的<Route>封装成可以做校验功能的<Route>
+ * 10. 404页面，匹配不到路由
+ * 
+ * 11. 路由守卫：将普通的传递进来的<Route>封装成可以做校验功能的<Route>
  * 11. 路由守卫结合redux做简单登录页面
  * 	11.1 新建src\store\user.redux.js
  * 	11.2 定义reducer
@@ -21,185 +24,94 @@ import React from 'react'
 import {BrowserRouter, Link, Route, Switch, Redirect} from 'react-router-dom'
 // 11.5
 import { connect } from 'react-redux'
-import { login } from '../store/user.redux'
+import { login } from '../store/15user.redux' 
 
+const ProductList = () => <div>
+		<h3>Products List</h3>
+		<Link to='/detail/web'>web 全栈</Link>
+	</div>
 
+const ProductManagement = () => <div>
+		<h3>Products Management</h3>
+		{/* 8. */}
+		<Link to='/management/add'>新增</Link>&nbsp;|&nbsp;
+		<Link to='/management/search'>搜索</Link>
+		<Route path='/management/add' component={()=><div>add</div>}/>
+		<Route path='/management/search' component={()=><div>search</div>}/>
+		{/* 9. 当进入该页面/management时,可以直接重定向到/management/add */}
+		<Redirect to='/management/add'></Redirect>
+	</div>
 
-function Home () {
-	return (<div>
-		<h3>课程列表</h3>
-		<ul>
-			<li><Link to="/detail/web">Web</Link></li>
-			<li><Link to="/detail/python">Python</Link></li>
-		</ul>
-	</div>)
+const Detail = ({match, history, location}) => {
+	// 7.
+	console.log(match, history, location)
+	// Object { path: "/detail/:name", url: "/detail/web", isExact: true, params: Object { name: "xx" } }
+	// Object { length: 50, action: "POP", location: {…}, createHref: createHref(location), push: push(path, state), replace: replace(path, state), go: go(n), goBack: goBack(), goForward: goForward(), block: block(prompt)
+	// , … }
+	// Object { pathname: "/detail/web", search: "", hash: "", state: undefined, key: "evegm9" }
+	return <div>
+		<h4>Product Detail</h4>
+		{/* 7. 这里由ProductList里的<Link></Link>;如果此时地址栏直接输入/detail/xx, 这里就会显示xx;  */}
+		{match.params.name}
+		<button onClick={()=> history.goBack()}>Back</button>
+	</div>
 }
 
-function About () {
-	return (
-	<div>
-		<h3>个人中心</h3>
-		<div>
-			<Link to="/about/me">个人信息</Link>{' | '}
-			<Link to="/about/order">订单信息</Link>
-		</div>
-		{/* 8. 路由嵌套结构: */}
-		<Switch>
-			<Route path="/about/me" component={()=> <div>Me</div>}/>
-			<Route path="/about/order" component={()=> <div>Order</div>}/>
-			{/* 9. 重定向：如果乱输url，如：/about/xxx，会直接重定向到 /about/me */}
-			<Redirect to="/about/me"/>
-		</Switch>
-	</div>)
-}
+export const ReactRouter = () => 
+		// 3. 顶层添加BrowserRouter 
+		<BrowserRouter>        
+			<nav>
+				{/* 4. */}
+				<Link to='/'>Product List</Link>&nbsp;|&nbsp;
+				<Link to='/management'>Product Management</Link>
+			</nav>
 
-// 6.
-const NoMatch = ({location}) =>{
-	return (<div>
-		404,{'  '}{location.pathname}不存在
-	</div>)
-}
-// 传递进来的props是路由器对象：
-const Detail = (props) => {
-	console.log(props)
-	// 1. history：导航指令如：history.back()
-		// action: "POP"
-		// block: ƒ block(prompt)
-		// createHref: ƒ createHref(location)
-		// go: ƒ go(n)
-		// goBack: ƒ goBack()
-		// goForward: ƒ goForward()
-		// length: 50
-		// listen: ƒ listen(listener)
-		// location: {pathname: "/detail/web", search: "", hash: "", state: undefined, key: "mivbl5"}
-		// push: ƒ push(path, state)
-		// replace: ƒ replace(path, state)
-		// __proto__: Object
+			{/* 6. 路由匹配是非独占的: 用Switch包着才能独占, 但根路径'/'须放到最后;*/} 
+			<Switch>
+				{/* 6. 另一种方法, 在每个<Route/>上加exact属性, 就不需Switch:*/}
+					{/* 5. 路由配置, 对应上面的<Link></Link> */}
+				<Route exact path="/" component={ProductList}/>
+				{/* 7.  */}
+				<Route path="/detail/:name" component={Detail}/>
+				{/* 11. 路由守卫 */}
+				<PrivateRoute path="/management" component={ProductManagement} />
+				{/* 11. 用于演示路由守卫 */}
+				<Route path='/login' component={Login}/>
+				{/* 10. 404页面!!!!必须写在最后, */}
+				<Route component={()=><h3>404 页面不存在</h3>}/>
+			</Switch>
+		</BrowserRouter>
 
-		
-		// 2. location：当前url信息，如location.pathname
-		// hash: ""
-		// key: "mivbl5"
-		// pathname: "/detail/web"
-		// search: ""
-		// state: undefined
-		// __proto__: Object
-		
-		// 3. match: 获取参数信息, 如match.params
-			// isExact: true
-			// params: {course: "web"}
-			// path: "/detail/:course"
-			// url: "/detail/web"
-			// __proto__: Object
-			// staticContext: undefined
-	return (<div>
-		当前课程：{props.match.params.course} <br/>
-		{/* 1. history：导航指令history.back() */}
-		<button onClick={props.history.goBack}>后退</button>
-	</div>)
-}
-
-
-// 10. 路由守卫：将普通的传递进来的<Route>封装成可以做校验功能的<Route>
-// 希望在组件中的用法：<PrivateRoute component={About} path="/about" ...>
-// 将封装后的component并起一个别名Comp, 
-// isLogin:功能单独摘出来,存放在redux里，
-// 其余属性用...rest接收
-// 11.5 用connect改写，使其连接redux：
+// 11. 路由守卫：将普通的传递进来的<Route>封装成可以做校验功能的<Route>
 const PrivateRoute = connect(
-	// !!!!!箭头函数除了return，也可用圆括号()
-  // state => {return {isLogin:state.user.isLogin}}
-  state => ({ isLogin:state.user.isLogin })
-)(
-	// 这里的component相当于<Route path="/about" component={About} />里的component={About}，即About组件
-	// isLogin是自己添加的，判断是否能登录的条件
-	// 其余不重要的参数用...rest接收
-({component: Comp, isLogin, ...rest}) => {
-  // ！！！ 这里定义具名Comp目的是，react写自定义组件时，必须采用大写<Comp/>
-  // console.log(Comp)
-  // ƒ About() {
-  // return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-  //   __source: {
-  //     fileName: _jsxFileName,
-  //     lineNumber: 40
-  //   },
-  //   __self: this
-  // }, react__WEBPACK_I…
-  return(
-    // render:根据条件动态加载组件：
-    <Route {...rest} render={
-      props => isLogin ?  <Comp/> :
-        <Redirect to={{
-          pathname: "/login", 
-          // 10.2 登录成功后去的地址：
-          state: { redirect: props.location.pathname } }}
-        />
-    }/>
-  )
-})
+	// 这里只需拿到redux里的isLogined状态:
+	state => ({isLogined: state.user.isLogined})
+)(({component: Comp, isLogined, ...rest}) => 
+	<Route {...rest} render = { props => isLogined ?  <Comp/> :
+		<Redirect to={{
+			pathname: "/login", 
+			// 登录成功后去的地址：
+			state: {redirect: props.location.pathname} }}
+		/>
+}/>)
 
-
-
-// // 登录组件：
+// 登录组件：
 // 11.5 用connect改写，使其连接redux：
 const Login = connect(
-  state => ({
-    isLogin: state.user.isLogin,
-    loading: state.user.loading
-  }),
-  { login }
-  )(
-  // 11.3 解构src\store\user.redux.js里传来的action creator
-  ({location, isLogin, login, loading }) => {
-    // 10.2 登录成功后去的地址：
-    const redirectUrl = location.state.redirect || '/';
-    // console.log(redirectUrl)
-    // 控制台：/about/me
-
-    // 10.3 如果已经登录，则去地址：redirect
-    if (isLogin) {
-      return <Redirect to={redirectUrl}/>
-    }
-    return (
-      <div>
-        <p>用户登录</p>
-        <hr/>
-				<button onClick={login} disabled={loading}>
-					{loading ? "登录中...": '登录'}
-				</button>
-      </div>
-    )
-  }
+	// mapStateToProps:
+	state => ({
+		isLogined: state.user.isLogined,
+		loading: state.user.loading
+	}),
+	// mapDispatchToProps: 
+	{login}
+)(({location, isLogined, loading, login }) => isLogined ?
+	<Redirect to={location.state.redirect || '/'}></Redirect>
+	:
+	<div>
+		<p>用户登录</p>
+		<button onClick={login} disabled={loading}>
+			{loading ? "登录中...": '登录'}
+		</button>
+	</div>
 )
-
-
-export default function ReactRouter() {
-	return (
-			<BrowserRouter>        
-				<div>
-					{/* 3. 页面链接<Link> */}
-					<div>
-						<Link to="/">首页</Link>{' | '}
-						<Link to="/about">关于</Link>
-					</div>
-
-					{/* 6. 如果碰到404页面，那种写法，必须用上<Switch> 才能实现独占路由*/}
-					<Switch>
-					{/* 4. 路由配置：路由即组件，默认包容式路由 '/'主页必须加上exact才能变成独占路由*/}
-						<Route exact path="/" component={Home} />
-
-						{/* 5. 动态传参 */}
-						<Route path="/detail/:course" component={Detail} />
-
-						{/* 10、路由守卫的封装：PrivateRoute */}
-						{/* <Route path="/about" component={About} /> */}
-						<PrivateRoute path="/about" component={About} />
-						<Route path="/login" component={Login} />
-
-						{/* 7. 404页面，没有path，必然匹配 ，并且需写在最后*/}
-						<Route component={NoMatch}/>
-					</Switch>
-				</div>
-			</BrowserRouter>
-	)
-}
