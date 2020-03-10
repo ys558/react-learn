@@ -22,7 +22,7 @@ import Rewirte from './components/12rewirte'
 
 
 
-import {ReactRouter} from './components/15reactRouter'
+import {ReactRouter} from './components/15.1reactRouter'
 import store15 from './store/15store'
 import ReduxSaga from './components/16ReduxSaga'
 import storeWithSaga from './store/index2'
@@ -50,6 +50,7 @@ import MyReactReduxUse from './components/13.5myReactReduxUse'
 
 // 15
 import { Provider } from 'react-redux'
+import MyRouter from './components/15.2MyReactRouter'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -155,9 +156,11 @@ export default class App extends Component {
 
         {/* 15. 路由 */}
         {/* 路由结合redux做登录页面 */}
-        <Provider store={store15}>
+        {/* <Provider store={store15}>
           <ReactRouter></ReactRouter>
-        </Provider>
+        </Provider> */}
+        {/* 15.2 路由源码解析 */}
+        <MyRouter></MyRouter>
 
         {/* saga umi */}
         {/* <Provider store={storeWithSaga}>
