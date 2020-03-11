@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {BrowserRouter, Link, Route, Switch, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
-import { login } from '../store/user.redux2'
+import { login } from '../store/16SagaUserReducer'
 
 function Home () {
 	return (<div>

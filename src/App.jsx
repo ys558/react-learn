@@ -25,7 +25,7 @@ import Rewirte from './components/12rewirte'
 import {ReactRouter} from './components/15.1reactRouter'
 import store15 from './store/15store'
 import ReduxSaga from './components/16ReduxSaga'
-import storeWithSaga from './store/index2'
+import storeWithSaga from './store/16SagaStore'
 import ModalDemo from './components/ModalDemo'
 
 // 07.
@@ -160,12 +160,12 @@ export default class App extends Component {
           <ReactRouter></ReactRouter>
         </Provider> */}
         {/* 15.2 路由源码解析 */}
-        <MyRouter></MyRouter>
+        {/* <MyRouter></MyRouter> */}
 
         {/* saga umi */}
-        {/* <Provider store={storeWithSaga}>
+        <Provider store={storeWithSaga}>
           <ReduxSaga></ReduxSaga>
-        </Provider> */}
+        </Provider>
 
         {/* <ModalDemo></ModalDemo> */}
       </div>
