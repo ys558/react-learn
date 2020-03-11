@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/*
+  react-redux提供两个api:
+    Provider
+    connect
+*/
 export const connect = (mapStateToProps = state => state, mapDispatchToProps = {}) => 
   WrapComponent => class ConnectComponent extends React.Component {
     static contextTypes = {
@@ -49,4 +54,16 @@ export class Provider extends React.Component {
   render() {
     return this.props.children
   }
+}
+
+function bindActionCreator(creator, dispatch){
+  return (...args) => dispatch(creator(...args))
+}
+export function bindActionCreators(creators,dispatch){
+  // 传进来的creatros: {plus: ()=>({type:'plus'})} 转换成含有派发action的函数:
+  // { plus: (...args)=>dispatch(creator(...args)) }
+  return Object.keys(creators).reduce((ret,item)=>{
+    ret[item] = bindActionCreator(creators[item],dispatch)
+    return ret
+  },{})
 }

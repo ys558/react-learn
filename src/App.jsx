@@ -20,24 +20,22 @@ import WrappedNormalLoginForm from './components/12AntdForm'
 import MockAntdForm from './components/12MockAntdFormComponent'
 import Rewirte from './components/12rewirte'
 
-// 13-02 react-redux
-import { Provider } from 'react-redux'
 
 
-// 12.3
-// import store02 from './components/13BaseReduxStore02'
-
-// import ReactRouter from './components/15reactRouter'
-// import store03 from './store/index'
+import {ReactRouter} from './components/15.1reactRouter'
+import store15 from './store/15store'
 import ReduxSaga from './components/16ReduxSaga'
 import storeWithSaga from './store/index2'
 import ModalDemo from './components/ModalDemo'
 
-
+// 07.
+import { Ref, CustomTextInput, ForwardRef, ForwardRefInHOC } from './components/07Ref'
+// 08.
 import HOC from './components/08HOC'
 import HOC2 from './components/08HOC2'
 import HOC3 from './components/08HOC3-Decorators'
 import HOC4 from './components/08HOC4'
+import HOC5 from './components/08HOC5-Lifting-state-up'
 import PropsRender from './components/08PropsRender'
 
 import ProviderConsumer from './components/07Context'
@@ -49,6 +47,10 @@ import ReduxMiddleWare from './components/13.2ReduxMiddleWare'
 import ReduxModulization from './components/13.3ReduxModulization'
 import MyReduxUse from './components/13.4MyReduxUse';
 import MyReactReduxUse from './components/13.5myReactReduxUse'
+
+// 15
+import { Provider } from 'react-redux'
+import MyRouter from './components/15.2MyReactRouter'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -106,12 +108,19 @@ export default class App extends Component {
         {/* 07. 跨代传值Context */}
         {/* <ProviderConsumer></ProviderConsumer> */}
 
+        {/* 07. Ref */}
+        {/* <Ref></Ref> */}
+        {/* <CustomTextInput></CustomTextInput> */}
+        {/* <ForwardRef></ForwardRef> */}
+        {/* <ForwardRefInHOC></ForwardRefInHOC> */}
+
         {/* 08. HOC 高阶组件及propsRender组件互调使用 */}
         {/* <PropsRender></PropsRender> */}
         {/* <HOC></HOC> */}
         {/* <HOC2></HOC2> */}
         {/* <HOC3></HOC3> */}
         {/* <HOC4></HOC4> */}
+        {/* <HOC5></HOC5> */}
         {/* <HocContext></HocContext> */}
 
         {/* 09. Composition 复合组件 */}
@@ -127,6 +136,9 @@ export default class App extends Component {
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
 
+        {/* 11. 隔代传参Provider, Context */}
+        {/* <Context></Context> */}
+
         {/* 模拟antd创建UI组件： */}
         {/* <MockAntdForm></MockAntdForm> */}
         {/* <hr/> */}
@@ -139,15 +151,16 @@ export default class App extends Component {
         {/* <ReduxMiddleWare/> */}
         {/* <ReduxModulization/> */}
         {/* <MyReduxUse/> */}
-        <MyReactReduxUse/>
+        {/* <MyReactReduxUse/> */}
 
 
-        {/* 路由 */}
-        {/* <ReactRouter></ReactRouter> */}
+        {/* 15. 路由 */}
         {/* 路由结合redux做登录页面 */}
-        {/* <Provider store={store03}>
+        {/* <Provider store={store15}>
           <ReactRouter></ReactRouter>
         </Provider> */}
+        {/* 15.2 路由源码解析 */}
+        <MyRouter></MyRouter>
 
         {/* saga umi */}
         {/* <Provider store={storeWithSaga}>
