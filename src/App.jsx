@@ -131,7 +131,7 @@ export default class App extends Component {
 
         
         {/* 10. Hook */}
-        {/* <HookUseState></HookUseState> */}
+        <HookUseState></HookUseState>
         {/* <HookUseEffect></HookUseEffect> */}
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
@@ -163,9 +163,9 @@ export default class App extends Component {
         {/* <MyRouter></MyRouter> */}
 
         {/* saga umi */}
-        <Provider store={storeWithSaga}>
+        {/* <Provider store={storeWithSaga}>
           <ReduxSaga></ReduxSaga>
-        </Provider>
+        </Provider> */}
 
         {/* <ModalDemo></ModalDemo> */}
       </div>

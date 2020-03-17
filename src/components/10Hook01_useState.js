@@ -4,54 +4,63 @@
  * @useState钩子
  * 不编写class的情况下使用state及React的其他特性
  */
-import React, { useState, useEffect }from 'react'
-// 展示水果列表
-const FruitList = ({fruits, onSetFruit}) => <ul>
-	{fruits.map(fruit => <li key={fruit} onClick={()=> onSetFruit(fruit)}>
-		{fruit}
-	</li>)}
-</ul>
+import React, { useState, useEffect } from 'react'
 
-// 添加水果
-const AddFruitList = (props) => {
-	const [pname, setPname] = useState('')
-	const onAddFruit = e => {
-		if (e.key === 'Enter'&& pname !== '') {
-			props.onAddFruit(pname)
-			setPname('')
-	}};
-	return <input type='text' value={pname}
-		onChange={e => setPname(e.target.value)} 
-		onKeyDown={onAddFruit} />
+// 展示水果列表
+const FruitList = ({ fruitsList, chooseFruit, removeFruit }) => {
+	return <ul>
+		{fruitsList.map((f, index) =><div key={index} >
+			<li onClick={() => chooseFruit(f)}>{f}</li>
+			{/* 3. 删除相应水果：*/}
+			{/* <button onClick={removeFruit(f)}>remove {f}</button> */}
+		</div>
+		)}
+	</ul>
+}
+// 添加水果列表：
+const InputFruitList = ({ onAddFruit }) => {
+	const [newFruit, addFruit] = useState('')
+	return <input 
+		// 1.1 <input type="text"/>先实现内部的双向数据绑定：value onChange
+		type="text" value={newFruit} onChange={e => addFruit(e.target.value)}
+		// 1.2 按下回车，触发水果列表改变, 移动端可以换成按钮
+		onKeyDown={ e => {
+			if (e.key === 'Enter' && newFruit !== '') {
+				onAddFruit(newFruit)
+				addFruit('')
+			}
+		}}
+	/>
 }
 
-export default function HookUseState () {
-	const [fruit, setFruit] = useState('')
-	// const [fruits, setFruits] = useState(['apple','banana','durain'])
-
-	// 模拟异步调用：
-	const [fruits, setFruits] = useState([])
-	useEffect(
-		()=>{setTimeout(() => {setFruits(['🍎','🍉'])}, 1000)}
-	,
-	[]) // 依赖为空表示只执行一次
-
-	// 设置页面标题副作用：
-	useEffect(() => { document.title = fruit }, [fruit]);
-	useEffect(()=> {
-		const timer = setInterval(() => {
-			console.log('msg')
-		}, 1000)
-		return () => { clearInterval(timer) }
-	},[])
+const HookUseState = () => {
+	// 2. 展示所选的水果的钩子
+	const [fruit, chooseFruit] = useState('')
+	// 1. 展示及删除水果列表的钩子
+	const [fruitsList, addFruit] = useState(['🍎', '🍇'])
+	// 3. 删除任一水果：
+	const [fruitChose, removeFruit] = useState(fruitsList)
 
 	return (
 		<div>
-			<p>{fruit === ''? 'choose fruit u like:': `u choose: ${fruit}`}</p>
-			{/* 水果显示列表： */}
-			<FruitList fruits={fruits} onSetFruit={setFruit} ></FruitList>
-			<AddFruitList onAddFruit={pname => setFruits([...fruits, pname ])}/>
+			{/* 2. 展示所选的水果的钩子  */}
+			<p>click fruit to choose, u  chose: {fruit}</p>
+			{/* 1. 展示及删除水果列表的钩子 */}
+			<FruitList 
+				fruitsList={fruitsList} 
+				chooseFruit={chooseFruit}
+				// // 3.
+				// fruit={fruit}
+				// removeFruit={i => {
+				// 	removeFruit(i)
+				// }}
+			/>
+			<InputFruitList 
+				fruitsList={fruitsList}
+				onAddFruit={i => addFruit([...fruitsList, i])} 
+			/>
 		</div>
 	)
 }
 
+export default HookUseState
