@@ -27,6 +27,8 @@ import ReduxSaga from './components/16ReduxSaga'
 import storeWithSaga from './store/16SagaStore'
 import ModalDemo from './components/ModalDemo'
 
+import Portal from './components/06DialogPage'
+
 // 07.
 import { Ref, CustomTextInput, ForwardRef, ForwardRefInHOC } from './components/07Ref'
 // 08.
@@ -102,7 +104,8 @@ export default class App extends Component {
         {/* 06. antd基础应用 */}
         {/* <AntDesignUI></AntDesignUI> */}
 
-        {/* 06 */}
+        {/* 06 createPortal 传送门:一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。*/}
+        <Portal/>
 
         {/* 07. 组件化存在的问题, 多次渲染 */}
         {/* <ComponentIssue></ComponentIssue> */}
@@ -132,7 +135,7 @@ export default class App extends Component {
 
         
         {/* 10. Hook */}
-        <HookUseState></HookUseState>
+        {/* <HookUseState></HookUseState> */}
         {/* <HookUseEffect></HookUseEffect> */}
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
