@@ -28,6 +28,7 @@ const AddFruitList = (props) => {
 
 export default function HookUseEffect () {
 	const [fruit, setFruit] = useState('')
+	// const [fruits, setFruits] = useState(['apple','banana','durain'])
 
 	// 模拟异步调用：
 	const [fruits, setFruits] = useState([])

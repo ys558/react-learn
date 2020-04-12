@@ -1,29 +1,33 @@
 ### 总结
 
-+ 工作原理
+- 工作原理
 
-  + UI=F(state)
+  - UI=Fn(state)
   
-+ React && ReactDOM 
+- React base api && ReactDOM
 
-  + React.createElement()
+  - `ReactDOM.render(<App/>, document.getElementById('root')))`
+    - `React.createElement()`
+  - React.Component{}
+  - React.cloneElement()
+  - React.Children.map()
   
-+ JSX
+- JSX
 
-  +  表达式： `{expr}`
-  + 属性：`<div id={expr}>`
-  + jsx自身也是表达式： `<p>{jsx}</p>`
+  -  表达式： `{expr}`
+  - 属性：`<div id={expr}>`
+  - jsx自身也是表达式： `<p>{jsx}</p>`
 
-+ 组件
+- 组件
 
-  + 函数式
-  + 类
+  - 函数式
+  - 类
 
-+ 属性
+- 属性
 
-  + `<Comp name="" style={{...}}/>`
+  - `<Comp name="" style={{...}}/>`
 
-+ 状态
+- 状态
 
   ```jsx
   state={} 
@@ -34,59 +38,58 @@
   ```
 
 
-+ 条件和循环
+- 条件和循环
 
-  + `{this.state.isLogin ? <p>{userInfo.name}</p> : 登录}`
-  + `{this.state.message && <p>{userInfo.name}</p>}`
-  + `{this.state.list.mpa(u=> <li>{u.title}</li>)}`
+  - `{this.state.isLogin ? <p>{userInfo.name}</p> : 登录}`
+  - `{this.state.message && <p>{userInfo.name}</p>}`
+  - `{this.state.list.mpa(u=> <li>{u.title}</li>)}`
 
-+ 事件
+- 事件
 
   ```jsx
   onChange = () => {}
   <input onChange={this.onChange} />
-  <input onChange={()=>this.onChange(user)}
+  // 传参:
+  <input onChange={()=>this.onChange(user)} />
+  ```
+- 通信
+
+  - `<Comp title={} onSubmit={this.onSubmit}><Comp />`
+  - `onSubmit={this.onSubmit}` 是从子组件传来的事件
+
+- 解决子class组件里重复渲染的问题，提升性能，优化办法：
+
+
+  - v15.3前，用 生命周期钩子函数控制是否渲染：`shouldComponentUpdate(nextProps){}`
+
+  ```jsx
+  shouldComponentUpdate(nextProps){
+      if (nextProps.xxx === this.props.xxx &&
+          nextProps.yyy === this.props.yyy) {
+          return false
+      }
+      return true
+  }
   ```
 
+  - v15.3后，类组件可使用：PureComponent
 
-  + 最后一种可以传参
+  ```jsx
+  class Comment extends PureComponent{ }
+  ```
 
-+ 通信
+  - v16.6.0后，函数式组件可使用：React.meno()
+  ```jsx
+  const Comment = React.memo(props => {} )
+  ```
 
-  + `<Comp title={} onSubmit={this.onSubmit}><Comp />`
-  + `onSubmit={this.onSubmit}` 是从子组件传来的事件
-  
-+ 高阶组件
-
-
-  + 解决子class组件里重复渲染的问题，提升性能，优化办法：
-
-
-    + v15.3前，用 生命周期钩子函数控制是否渲染：`shouldComponentUpdate(nextProps){}`
-
-      ```jsx
-      shouldComponentUpdate(nextProps){
-          if (nextProps.xxx === this.props.xxx &&
-              nextProps.yyy === this.props.yyy) {
-              return false
-          }
-          return true
-      }
-      ```
-
-    + v15.3后，PureComponent
-
-      ```jsx
-          
-      ```
-
-    + v16.6.0后，React.mono()
+- 高阶组件
 
 
-+ Hook
-  + v16.8以后的新增项，
+- Hook
+  - v16.8以后的新增项，官方出品全面取代类组件的钩子函数
 
-+ Redux原理
+- Redux原理
   ```js
   export function createStore(reducer, enhancer ){
     // enhancer强化函数
@@ -108,6 +111,7 @@
       currentListeners.forEach(v=>v())
       return action
     }
+    // 默认初始状态，随便起个名字，但不能和用户的重复
     dispatch({type:'@IMOOC/WONIU-REDUX'})
     return { getState, subscribe, dispatch}
   }
@@ -132,6 +136,7 @@
   }
 
   export function compose(...funcs) {
+    // 判断是否传入中间件：
     if(funcs.length == 0) return arg => arg
     if(funcs.length == 1) return funcs[0]
     return funcs.reducer((ret, item) => (...args) => ret(item(...args)))
@@ -149,7 +154,7 @@
   }
   ```
 
-+ react-redux 基础原理
+- react-redux 基础原理
 
   ```jsx
   import React from 'react'
@@ -188,7 +193,7 @@
     }
   }
   ```
-+ Provider原理
+- Provider原理
   ```jsx
   export class Provider extends React.Component {
     static childContextTypes = { store: PropTypes.object }
@@ -205,7 +210,7 @@
   }
   ```
 
-+ Redux-thunk
+- Redux-thunk
   ```jsx
   const thunk = ({dispatch, getState}) => next => action =>{
     if ( typeof action == 'function' ) {

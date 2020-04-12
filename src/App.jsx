@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-// import logo from './logo.svg'
-// import { Welcome1, Welcome2 } from './components/01CompType'
-// import Clock  from './components/02State-setState'
-// import StateTest from './components/03StateTest'
+import { Welcome1, Welcome2 } from './components/01CompType'
+import Clock  from './components/02State-setState'
+import StateTest from './components/03StateTest'
 import CartSample from './components/04CartSample'
 import LifeCycle from './components/05LifeCycle'
 import AntDesignUI from './components/06AntDesignUI'
@@ -103,6 +102,8 @@ export default class App extends Component {
         {/* 06. antd基础应用 */}
         {/* <AntDesignUI></AntDesignUI> */}
 
+        {/* 06 */}
+
         {/* 07. 组件化存在的问题, 多次渲染 */}
         {/* <ComponentIssue></ComponentIssue> */}
         {/* 07. 跨代传值Context */}
@@ -131,7 +132,7 @@ export default class App extends Component {
 
         
         {/* 10. Hook */}
-        {/* <HookUseState></HookUseState> */}
+        <HookUseState></HookUseState>
         {/* <HookUseEffect></HookUseEffect> */}
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
@@ -163,9 +164,9 @@ export default class App extends Component {
         {/* <MyRouter></MyRouter> */}
 
         {/* saga umi */}
-        <Provider store={storeWithSaga}>
+        {/* <Provider store={storeWithSaga}>
           <ReduxSaga></ReduxSaga>
-        </Provider>
+        </Provider> */}
 
         {/* <ModalDemo></ModalDemo> */}
       </div>
