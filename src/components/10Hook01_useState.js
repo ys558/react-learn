@@ -4,53 +4,54 @@
  * @useState钩子
  * 不编写class的情况下使用state及React的其他特性
  */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // 展示水果列表
-const FruitList = ({ fruitsList, chooseFruit }) => {
+export const FruitList = ({ fruits, chooseFruit, setFruits }) => {
+	const delFruit = index => {
+		const temp = [...fruits]
+		temp.splice(index, 1)
+		setFruits(temp)
+	}
 	return <ul>
-		{fruitsList.map((f, index) =><div key={index} >
+		{fruits.map((f, index) =><div key={index} >
 			<li onClick={() => chooseFruit(f)}>{f}</li>
+			<button onClick={()=> delFruit(index)}>delete</button>
 		</div>
 		)}
 	</ul>
 }
 // 添加水果列表：
-const AddFruitList = ({ onAddFruit }) => {
-	const [newFruit, addFruit] = useState('')
+const AddFruit = ({ onAddFruit }) => {
+	const [newFruit, setFruits] = useState('')
 	return <input 
-		// 1.1 <input type="text"/>先实现内部的双向数据绑定：value onChange
-		type="text" value={newFruit} onChange={e => addFruit(e.target.value)}
-		// 1.2 按下回车，触发水果列表改变, 移动端可以换成按钮
+		type="text" value={newFruit} onChange={e => setFruits(e.target.value)}
 		onKeyDown={ e => {
 			if (e.key === 'Enter' && newFruit !== '') {
 				onAddFruit(newFruit)
-				addFruit('')
+				setFruits('')
 			}
 		}}
 	/>
 }
 
 const HookUseState = () => {
-	// 2. 展示所选的水果的钩子
 	const [fruit, chooseFruit] = useState('')
-	// 1. 展示及删除水果列表的钩子
-	const [fruitsList, addFruit] = useState(['🍎', '🍇'])
+	const [fruits, setFruits] = useState(['🍎', '🍇','🍉','🍈'])
 
 	return (
 		<div>
-			{/* 2. 展示所选的水果的钩子  */}
 			<p>click fruit to choose : {fruit}</p>
-			{/* 1. 展示及删除水果列表的钩子 */}
 			<FruitList 
-				fruitsList={fruitsList} 
+				fruits={fruits} 
 				chooseFruit={chooseFruit}
+				setFruits={setFruits}
 				// 3.
 				fruit={fruit}
 			/>
-			<AddFruitList 
-				fruitsList={fruitsList}
-				onAddFruit={i => addFruit([...fruitsList, i])} 
+			<AddFruit 
+				fruits={fruits}
+				onAddFruit={i => setFruits([...fruits, i])} 
 			/>
 		</div>
 	)

@@ -101,7 +101,7 @@ export default class App extends Component {
         {/* <CartSample title="课程"></CartSample> */}
 
         {/* 05. 生命周期： */}
-        {this.state.prop && <LifeCycle props={this.state}></LifeCycle>}
+        {/* {this.state.prop && <LifeCycle props={this.state}></LifeCycle>} */}
 
         {/* 06. antd基础应用 */}
         {/* <AntDesignUI></AntDesignUI> */}
@@ -139,7 +139,7 @@ export default class App extends Component {
         {/* 10. Hook */}
         {/* <HookUseState></HookUseState> */}
         {/* <HookUseEffect></HookUseEffect> */}
-        {/* <HookUseReducer></HookUseReducer> */}
+        <HookUseReducer></HookUseReducer>
         {/* <HookUseContext></HookUseContext> */}
 
         {/* 11. 隔代传参Provider, Context */}
