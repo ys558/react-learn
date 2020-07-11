@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-// import logo from './logo.svg'
-// import { Welcome1, Welcome2 } from './components/01CompType'
-// import Clock  from './components/02State-setState'
-// import StateTest from './components/03StateTest'
+import { Welcome1, Welcome2 } from './components/01CompType'
+import Clock  from './components/02State-setState'
+import StateTest from './components/03StateTest'
 import CartSample from './components/04CartSample'
 import LifeCycle from './components/05LifeCycle'
 import AntDesignUI from './components/06AntDesignUI'
@@ -27,6 +26,8 @@ import store15 from './store/15store'
 import ReduxSaga from './components/16ReduxSaga'
 import storeWithSaga from './store/16SagaStore'
 import ModalDemo from './components/ModalDemo'
+
+import Portal from './components/06DialogPage'
 
 // 07.
 import { Ref, CustomTextInput, ForwardRef, ForwardRefInHOC } from './components/07Ref'
@@ -102,6 +103,9 @@ export default class App extends Component {
 
         {/* 06. antd基础应用 */}
         {/* <AntDesignUI></AntDesignUI> */}
+
+        {/* 06 createPortal 传送门:一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。*/}
+        <Portal/>
 
         {/* 07. 组件化存在的问题, 多次渲染 */}
         {/* <ComponentIssue></ComponentIssue> */}
