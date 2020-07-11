@@ -43,28 +43,29 @@ class ModalDemo extends Component {
 // };
 
 /* 方法2: 利用createPortal, 将弹框放在想要出现的层级, 这里放body里 */
-// class Modal extends Component {
-//   constructor(props) {
-//     super(props)
-//     const doc = window.document
-//     this.node = doc.createElement('div')
-//     doc.body.appendChild(this.node)
-//   }
-//   render(){
-//     return(
-//     createPortal(
-//       <div style={getModalStyle()}>
-//         <button style={getBtnStyle()} onClick={this.props.hideModal}>close</button>
-//       </div>, this.node
-//       )
-//     )
-//   }
-// }
+class Modal extends Component {
+  constructor(props) {
+    super(props)
+    const doc = window.document
+    this.node = doc.createElement('div')
+    doc.body.appendChild(this.node)
+  }
+  componentWillUnmount(){ window.document.body.removeChild(this.node) }
+  render(){
+    return(
+    createPortal(
+      <div style={getModalStyle()}>
+        <button style={getBtnStyle()} onClick={this.props.hideModal}>close</button>
+      </div>, this.node
+      )
+    )
+  }
+}
 
 /* 方法2.1: 将class Modal改为函数式写法*/ 
-const Modal = ({hideModal, node}) => createPortal(<div style={getModalStyle()}>
-    <button style={getBtnStyle()} onClick={hideModal}>close</button>
-  </div>, node)
+// const Modal = ({hideModal, node}) => createPortal(<div style={getModalStyle()}>
+//     <button style={getBtnStyle()} onClick={hideModal}>close</button>
+//   </div>, node)
 
 const getModalStyle = () => ({
     border: "1px solid",

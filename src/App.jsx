@@ -52,6 +52,7 @@ import MyReactReduxUse from './components/13.5myReactReduxUse'
 // 15
 import { Provider } from 'react-redux'
 import MyRouter from './components/15.2MyReactRouter'
+import ModalByHook from './components/ModalDemoByHook'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -171,7 +172,8 @@ export default class App extends Component {
           <ReduxSaga></ReduxSaga>
         </Provider> */}
 
-        <ModalDemo></ModalDemo>
+        {/* <ModalDemo></ModalDemo> */}
+        <ModalByHook></ModalByHook>
       </div>
     )
   }
