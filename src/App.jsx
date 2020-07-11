@@ -25,7 +25,7 @@ import {ReactRouter} from './components/15.1reactRouter'
 import store15 from './store/15store'
 import ReduxSaga from './components/16ReduxSaga'
 import storeWithSaga from './store/16SagaStore'
-import ModalDemo from './components/ModalDemo'
+import ModalDemo from './components/17ModalDemo'
 
 import Portal from './components/06DialogPage'
 
@@ -52,7 +52,8 @@ import MyReactReduxUse from './components/13.5myReactReduxUse'
 // 15
 import { Provider } from 'react-redux'
 import MyRouter from './components/15.2MyReactRouter'
-import ModalByHook from './components/ModalDemoByHook'
+import ModalByHook from './components/17ModalDemoByHook'
+import Tree from './components/18Tree'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -106,7 +107,7 @@ export default class App extends Component {
         {/* <AntDesignUI></AntDesignUI> */}
 
         {/* 06 createPortal 传送门:一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。*/}
-        <Portal/>
+        {/* <Portal/> */}
 
         {/* 07. 组件化存在的问题, 多次渲染 */}
         {/* <ComponentIssue></ComponentIssue> */}
@@ -129,10 +130,10 @@ export default class App extends Component {
         {/* <HocContext></HocContext> */}
 
         {/* 09. Composition 复合组件 */}
-        <Composition></Composition>
-        <Composition2></Composition2>
+        {/* <Composition></Composition> */}
+        {/* <Composition2></Composition2> */}
         {/* 09. 反向继承 */}
-        <Composition3></Composition3>
+        {/* <Composition3></Composition3> */}
 
         
         {/* 10. Hook */}
@@ -173,7 +174,9 @@ export default class App extends Component {
         </Provider> */}
 
         {/* <ModalDemo></ModalDemo> */}
-        <ModalByHook></ModalByHook>
+        {/* <ModalByHook></ModalByHook> */}
+
+        <Tree/>
       </div>
     )
   }
