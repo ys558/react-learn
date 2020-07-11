@@ -35,7 +35,7 @@ import HOC from './components/08HOC'
 import HOC2 from './components/08HOC2'
 import HOC3 from './components/08HOC3-Decorators'
 import HOC4 from './components/08HOC4'
-import HOC5 from './components/08HOC5-Lifting-state-up'
+import HOC5 from './components/08HOC5-wrappedComponent'
 import PropsRender from './components/08PropsRender'
 
 import ProviderConsumer from './components/07Context'
@@ -124,14 +124,14 @@ export default class App extends Component {
         {/* <HocContext></HocContext> */}
 
         {/* 09. Composition 复合组件 */}
-        {/* <Composition></Composition> */}
-        {/* <Composition2></Composition2> */}
+        <Composition></Composition>
+        <Composition2></Composition2>
         {/* 09. 反向继承 */}
-        {/* <Composition3></Composition3> */}
+        <Composition3></Composition3>
 
         
         {/* 10. Hook */}
-        <HookUseState></HookUseState>
+        {/* <HookUseState></HookUseState> */}
         {/* <HookUseEffect></HookUseEffect> */}
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
@@ -167,7 +167,7 @@ export default class App extends Component {
           <ReduxSaga></ReduxSaga>
         </Provider> */}
 
-        {/* <ModalDemo></ModalDemo> */}
+        <ModalDemo></ModalDemo>
       </div>
     )
   }

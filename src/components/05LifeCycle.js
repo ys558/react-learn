@@ -14,10 +14,13 @@ export default class LifeCycle extends Component {
     constructor(props) {
         super(props)
         console.log(`1. 组件构造函数执行 constructor`)
+        this.state = {state: 'some state for getDerivedStateFromProps lifeCycle 2nd param'}
     }
 
     // v16.3新增生命周期：
     static getDerivedStateFromProps(props, state){
+        console.log(state)
+        console.log(props)
         // 在组件创建时和更新时的render方法之前调用，它返回一个对象来更新状态，或者返回null来不更新任何内容。
         return null
     }

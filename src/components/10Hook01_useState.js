@@ -7,18 +7,16 @@
 import React, { useState, useEffect } from 'react'
 
 // 展示水果列表
-const FruitList = ({ fruitsList, chooseFruit, removeFruit }) => {
+const FruitList = ({ fruitsList, chooseFruit }) => {
 	return <ul>
 		{fruitsList.map((f, index) =><div key={index} >
 			<li onClick={() => chooseFruit(f)}>{f}</li>
-			{/* 3. 删除相应水果：*/}
-			{/* <button onClick={removeFruit(f)}>remove {f}</button> */}
 		</div>
 		)}
 	</ul>
 }
 // 添加水果列表：
-const InputFruitList = ({ onAddFruit }) => {
+const AddFruitList = ({ onAddFruit }) => {
 	const [newFruit, addFruit] = useState('')
 	return <input 
 		// 1.1 <input type="text"/>先实现内部的双向数据绑定：value onChange
@@ -38,24 +36,19 @@ const HookUseState = () => {
 	const [fruit, chooseFruit] = useState('')
 	// 1. 展示及删除水果列表的钩子
 	const [fruitsList, addFruit] = useState(['🍎', '🍇'])
-	// 3. 删除任一水果：
-	const [fruitChose, removeFruit] = useState(fruitsList)
 
 	return (
 		<div>
 			{/* 2. 展示所选的水果的钩子  */}
-			<p>click fruit to choose, u  chose: {fruit}</p>
+			<p>click fruit to choose : {fruit}</p>
 			{/* 1. 展示及删除水果列表的钩子 */}
 			<FruitList 
 				fruitsList={fruitsList} 
 				chooseFruit={chooseFruit}
-				// // 3.
-				// fruit={fruit}
-				// removeFruit={i => {
-				// 	removeFruit(i)
-				// }}
+				// 3.
+				fruit={fruit}
 			/>
-			<InputFruitList 
+			<AddFruitList 
 				fruitsList={fruitsList}
 				onAddFruit={i => addFruit([...fruitsList, i])} 
 			/>
