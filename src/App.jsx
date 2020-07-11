@@ -139,8 +139,8 @@ export default class App extends Component {
         {/* 10. Hook */}
         {/* <HookUseState></HookUseState> */}
         {/* <HookUseEffect></HookUseEffect> */}
-        <HookUseReducer></HookUseReducer>
-        {/* <HookUseContext></HookUseContext> */}
+        {/* <HookUseReducer></HookUseReducer> */}
+        <HookUseContext></HookUseContext>
 
         {/* 11. 隔代传参Provider, Context */}
         {/* <Context></Context> */}
