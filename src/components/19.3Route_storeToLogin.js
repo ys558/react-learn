@@ -5,16 +5,16 @@ const initialLogin = {
   name: null,
 };
 
-const loginReducer = (state = {...initialLogin}, action) => {
+const loginReducer = (state = { ...initialLogin }, action) => {
   switch (action.type) {
     case "getUserInfo":
       return { ...state, isLogin: false, name: null };
-    case "LoginSuccess":
+    case "loginSuccess":
       return { ...state, isLogin: true, name: "xiaoming" };
-    case "LoginFailure":
+    case "loginFailure":
       return { ...state, isLogin: false, name: null };
     default:
-      return state
+      return state;
   }
 };
 

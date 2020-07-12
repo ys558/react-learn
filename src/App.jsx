@@ -57,7 +57,7 @@ import ModalByHook from './components/17ModalDemoByHook'
 import Tree from './components/18Tree'
 import RoutesBase from './components/19.0Routes_Base'
 import RoutesActivate from './components/19.1Routes_activate'
-import RoutesPrivateRoute from './components/19.2Routes_PrivateRoute'
+import RoutesLogin from './components/19.2.1Routes_login'
 import store from './components/19.3Route_storeToLogin'
 
 // const formatName = (user) => {
@@ -187,7 +187,7 @@ export default class App extends Component {
         {/* <RoutesBase></RoutesBase> */}
         {/* <RoutesActivate></RoutesActivate> */}
         <Provider store={store}>
-          <RoutesPrivateRoute></RoutesPrivateRoute>
+          <RoutesLogin></RoutesLogin>
         </Provider>
 
         {/* <Tree/> */}
