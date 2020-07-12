@@ -22,7 +22,7 @@ import Rewirte from './components/12rewirte'
 
 
 
-import {ReactRouter} from './components/15.1reactRouter'
+import {ReactRouter} from './components/15.1reactRoutes.js'
 import store15 from './store/15store'
 import ReduxSaga from './components/16ReduxSaga'
 import storeWithSaga from './store/16SagaStore'
@@ -52,9 +52,13 @@ import MyReactReduxUse from './components/13.5myReactReduxUse'
 
 // 15
 import { Provider } from 'react-redux'
-import MyRouter from './components/15.2MyReactRouter'
+import MyRouter from './components/15.2reactRoutes_MyReactRouter'
 import ModalByHook from './components/17ModalDemoByHook'
 import Tree from './components/18Tree'
+import RoutesBase from './components/19.0Routes_Base'
+import RoutesActivate from './components/19.1Routes_activate'
+import RoutesPrivateRoute from './components/19.2Routes_PrivateRoute'
+import store from './components/19.3Route_storeToLogin'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -143,7 +147,7 @@ export default class App extends Component {
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
         {/* <HookUseMemo/> */}
-        <HookUseCallback/>
+        {/* <HookUseCallback/> */}
 
         {/* 11. 隔代传参Provider, Context */}
         {/* <Context></Context> */}
@@ -171,6 +175,7 @@ export default class App extends Component {
         {/* 15.2 路由源码解析 */}
         {/* <MyRouter></MyRouter> */}
 
+
         {/* saga umi */}
         {/* <Provider store={storeWithSaga}>
           <ReduxSaga></ReduxSaga>
@@ -179,7 +184,13 @@ export default class App extends Component {
         {/* <ModalDemo></ModalDemo> */}
         {/* <ModalByHook></ModalByHook> */}
 
-        <Tree/>
+        {/* <RoutesBase></RoutesBase> */}
+        {/* <RoutesActivate></RoutesActivate> */}
+        <Provider store={store}>
+          <RoutesPrivateRoute></RoutesPrivateRoute>
+        </Provider>
+
+        {/* <Tree/> */}
       </div>
     )
   }
