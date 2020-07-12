@@ -13,6 +13,7 @@ import HookUseState from './components/10Hook01_useState'
 import HookUseEffect from './components/10Hook02_useEffect'
 import HookUseReducer from './components/10Hook03_useReducer'
 import HookUseContext from './components/10Hook04_useContext'
+import {HookUseMemo, HookUseCallback} from './components/10Hook05_useCallbackAnduseMemoHook'
 
 import Context from './components/11Context'
 import WrappedNormalLoginForm from './components/12AntdForm'
@@ -140,7 +141,9 @@ export default class App extends Component {
         {/* <HookUseState></HookUseState> */}
         {/* <HookUseEffect></HookUseEffect> */}
         {/* <HookUseReducer></HookUseReducer> */}
-        <HookUseContext></HookUseContext>
+        {/* <HookUseContext></HookUseContext> */}
+        {/* <HookUseMemo/> */}
+        <HookUseCallback/>
 
         {/* 11. 隔代传参Provider, Context */}
         {/* <Context></Context> */}
