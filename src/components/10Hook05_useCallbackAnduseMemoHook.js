@@ -67,7 +67,7 @@ const Child = ({callback}) =>{
 	const [count, setCount] = useState(()=> callback())
 	useEffect(() => setCount(callback()), [callback])
 	
-	return <div onClick={()=> setCount(callback())}>
+	return <div>
 		Child count: {count}
 	</div>
 }
