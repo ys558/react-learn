@@ -54,11 +54,11 @@ export const HookUseCallback = () => {
 	const callback = useCallback(() => count, [count])
 
 	return <div>
-	<h3>{count}</h3>
-	<Child callback={callback} />
-		<div>
-			<button onClick={()=> setCount(count + 1)}>+1</button>
-		</div>
+		<span>
+			Parent count: {count}
+			<button onClick={()=> setCount(count + 1)}>parent count +1</button>
+		</span>
+		<Child callback={callback} />
 	</div>
 }
 
