@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { createBrowserHistory } from "history";
-import matchPath from './15.2MatchPath'
+import matchPath from './15.2reactRoutes_MatchPath'
 
 //创建一个上下文保存history、location等
 const RouterContext = React.createContext();

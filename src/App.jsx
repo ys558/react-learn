@@ -13,6 +13,7 @@ import HookUseState from './components/10Hook01_useState'
 import HookUseEffect from './components/10Hook02_useEffect'
 import HookUseReducer from './components/10Hook03_useReducer'
 import HookUseContext from './components/10Hook04_useContext'
+import {HookUseMemo, HookUseCallback} from './components/10Hook05_useCallbackAnduseMemoHook'
 
 import Context from './components/11Context'
 import WrappedNormalLoginForm from './components/12AntdForm'
@@ -21,11 +22,11 @@ import Rewirte from './components/12rewirte'
 
 
 
-import {ReactRouter} from './components/15.1reactRouter'
+import {ReactRouter} from './components/15.1reactRoutes.js'
 import store15 from './store/15store'
 import ReduxSaga from './components/16ReduxSaga'
 import storeWithSaga from './store/16SagaStore'
-import ModalDemo from './components/ModalDemo'
+import ModalDemo from './components/17ModalDemo'
 
 import Portal from './components/06DialogPage'
 
@@ -36,7 +37,7 @@ import HOC from './components/08HOC'
 import HOC2 from './components/08HOC2'
 import HOC3 from './components/08HOC3-Decorators'
 import HOC4 from './components/08HOC4'
-import HOC5 from './components/08HOC5-Lifting-state-up'
+import HOC5 from './components/08HOC5-wrappedComponent'
 import PropsRender from './components/08PropsRender'
 
 import ProviderConsumer from './components/07Context'
@@ -51,8 +52,13 @@ import MyReactReduxUse from './components/13.5myReactReduxUse'
 
 // 15
 import { Provider } from 'react-redux'
-import MyRouter from './components/15.2MyReactRouter'
-import HookA from './components/10HookA'
+import MyRouter from './components/15.2reactRoutes_MyReactRouter'
+import ModalByHook from './components/17ModalDemoByHook'
+import Tree from './components/18Tree'
+import RoutesBase from './components/19.0Routes_Base'
+import RoutesActivate from './components/19.1Routes_activate'
+import RoutesLogin from './components/19.2.1Routes_login'
+import store from './components/19.3Route_storeToLogin'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -141,6 +147,8 @@ export default class App extends Component {
         <HookUseEffect></HookUseEffect>
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
+        {/* <HookUseMemo/> */}
+        {/* <HookUseCallback/> */}
 
         {/* 11. 隔代传参Provider, Context */}
         {/* <Context></Context> */}
@@ -168,12 +176,22 @@ export default class App extends Component {
         {/* 15.2 路由源码解析 */}
         {/* <MyRouter></MyRouter> */}
 
+
         {/* saga umi */}
         {/* <Provider store={storeWithSaga}>
           <ReduxSaga></ReduxSaga>
         </Provider> */}
 
         {/* <ModalDemo></ModalDemo> */}
+        {/* <ModalByHook></ModalByHook> */}
+
+        {/* <RoutesBase></RoutesBase> */}
+        {/* <RoutesActivate></RoutesActivate> */}
+        <Provider store={store}>
+          <RoutesLogin></RoutesLogin>
+        </Provider>
+
+        {/* <Tree/> */}
       </div>
     )
   }

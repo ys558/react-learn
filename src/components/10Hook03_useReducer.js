@@ -4,61 +4,62 @@ import React, { useState, useEffect, useReducer }from 'react'
  * useReducer是useState的可选项，常用于组件有复杂状态逻辑时抽离成独立函数，类似于redux中reducer概念。
  */
 
-  
-const FruitList = ({fruits, onSetFruit, onRemoveFruit}) => <>
-	{fruits.map(fruit => 
-	<div key={fruit}>
-		<span onClick={()=> onSetFruit(fruit)}>{fruit}</span>
-		<button onClick={()=> onRemoveFruit(fruit)}>x</button>
-	</div>)}
-</>
-
-const FruitListAdd = (props) => {
-	const [pname, setPname] = useState('')
-	const onAddFruit = e => {
-		if (e.key === 'Enter' && pname !== '') {
-			props.onAddFruit(pname)
-			setPname('')
-	}};
-	return <input type='text' value={pname} onChange={e => setPname(e.target.value)} 
-		onKeyDown={onAddFruit} />
-}
-
-
 const fruitReducer = (state, action) => {
 	switch (action.type) {
 		case "init":
 			return action.payload;
-		case "add":
-			return [...state, action.payload];
 		case 'remove':
 			return state.filter(i => i !== action.payload )
+		case 'add':
+			return [...state, action.payload]
 		default:
 			return state;
 	}
 }
 
-export default function HookUseReducer () {
-	const [fruit, setFruit] = useState('')
-	// const [fruits, setFruits] = useState([])
-	// useEffect(()=>{setTimeout(() => {setFruits(['香蕉','西瓜'])}, 1000)} ,[])
-	
-	// 参数1是reducer
-	// 参数2是初始值[]
+const UseReducer = () => {
 	const [fruits, dispatchFruits] = useReducer(fruitReducer, [])
-	useEffect(()=>{
-		dispatchFruits({type: 'init', payload: ['🍌', '🍉','🍎', '🥝']})
-	},[])
+
+	useEffect(()=> {
+		// 模拟异步获取数据：
+		setTimeout(()=> dispatchFruits({type: 'init', payload: ['🍌', '🍉','🍎', '🥝']}),800)
+		// setTimeout func must be cleared when Component will unMount:
+		return () => {}
+	}, [])
 
 	return (
 		<div>
-			<p>{fruit === ''? 'choose fruit u like:': `u choose: ${fruit}`}</p>
-			<FruitList fruits={fruits} onSetFruit={setFruit} 
+			<h1>UseReducer</h1>
+			<h2>click fruit to delete:</h2>
+			<FruitList fruits={fruits}
 				onRemoveFruit={pname => dispatchFruits({ type: 'remove', payload: pname})}
 			/>
-			<FruitListAdd onAddFruit={pname => dispatchFruits({ type: 'add', payload: pname})}/>
+			<AddFruite fruits={fruits} 
+				onAddFruit={pname => dispatchFruits({ type: 'add', payload: pname}) }
+			/>
 		</div>
 	)
 }
 
+const FruitList = ({fruits, onRemoveFruit}) => <>
+	{fruits.map(fruit => 
+	<div key={fruit}>
+		<span onClick={()=> onRemoveFruit(fruit)} style={{'cursor': 'pointer'}}>{fruit}</span>
+	</div>)}
+</>
 
+const AddFruite = ({onAddFruit}) => {
+	const [newFruite, setNewFruite] = useState('')
+	const addFruit = e => {
+		if (e.key === 'Enter' && newFruite !== '') {
+			onAddFruit(newFruite)
+			setNewFruite('')
+	}};
+	return <>
+	<input type="text" value={newFruite} 
+		onChange={e=> setNewFruite(e.target.value) }
+		onKeyDown={addFruit}
+	/>
+</>}
+
+export default UseReducer
