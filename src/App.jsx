@@ -52,6 +52,7 @@ import MyReactReduxUse from './components/13.5myReactReduxUse'
 // 15
 import { Provider } from 'react-redux'
 import MyRouter from './components/15.2MyReactRouter'
+import HookA from './components/10HookA'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -105,7 +106,7 @@ export default class App extends Component {
         {/* <AntDesignUI></AntDesignUI> */}
 
         {/* 06 createPortal 传送门:一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。*/}
-        <Portal/>
+        {/* <Portal/> */}
 
         {/* 07. 组件化存在的问题, 多次渲染 */}
         {/* <ComponentIssue></ComponentIssue> */}
@@ -135,8 +136,9 @@ export default class App extends Component {
 
         
         {/* 10. Hook */}
-        {/* <HookUseState></HookUseState> */}
-        {/* <HookUseEffect></HookUseEffect> */}
+        <HookUseState></HookUseState>
+        <HookA></HookA>
+        <HookUseEffect></HookUseEffect>
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
 

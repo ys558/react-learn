@@ -12,7 +12,9 @@ const FruitList = ({ fruitsList, chooseFruit, removeFruit }) => {
 		{fruitsList.map((f, index) =><div key={index} >
 			<li onClick={() => chooseFruit(f)}>{f}</li>
 			{/* 3. 删除相应水果：*/}
-			{/* <button onClick={removeFruit(f)}>remove {f}</button> */}
+			<button onClick={()=> {
+				return fruitsList.splice(fruitsList.indexOf(f), 1)
+				}}>remove {f}</button>
 		</div>
 		)}
 	</ul>
@@ -39,7 +41,7 @@ const HookUseState = () => {
 	// 1. 展示及删除水果列表的钩子
 	const [fruitsList, addFruit] = useState(['🍎', '🍇'])
 	// 3. 删除任一水果：
-	const [fruitChose, removeFruit] = useState(fruitsList)
+	const [newFruitsList, removeFruit] = useState(fruitsList)
 
 	return (
 		<div>
@@ -49,11 +51,12 @@ const HookUseState = () => {
 			<FruitList 
 				fruitsList={fruitsList} 
 				chooseFruit={chooseFruit}
-				// // 3.
-				// fruit={fruit}
-				// removeFruit={i => {
-				// 	removeFruit(i)
-				// }}
+				
+				// 3.
+				fruit={fruit}
+				removeFruit={i => {
+					removeFruit(i)
+				}}
 			/>
 			<InputFruitList 
 				fruitsList={fruitsList}

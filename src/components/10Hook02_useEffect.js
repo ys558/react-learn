@@ -47,7 +47,7 @@ export default function HookUseEffect () {
 	}, [someId]); // Or [] if effect doesn't need props or state
 	*/ 	
 	useEffect(
-		()=>{setTimeout(() => {setFruits(['香蕉','西瓜'])}, 1000)}
+		()=>{setTimeout(() => {setFruits(['香蕉','西瓜'])}, 2000)}
 	,
 	[]) // 依赖为空表示只执行一次
 
@@ -70,20 +70,20 @@ export default function HookUseEffect () {
 
 
 
-// 模拟取接口：
-function FetchData() { 
-	const [data, dataSet] = useState(false)
+// // 模拟取接口：
+// function FetchData() { 
+// 	const [data, dataSet] = useState(false)
 
-	const fetchMyAPI = async () => {
-		try{
-			let response = await fetch('api/data')
-			response = await response.json()
-			dataSet(response)
-		}catch (e){
-			console.log(e)
-		}
-	}
+// 	const fetchMyAPI = async () => {
+// 		try{
+// 			let response = await fetch('api/data')
+// 			response = await response.json()
+// 			dataSet(response)
+// 		}catch (e){
+// 			console.log(e)
+// 		}
+// 	}
 
-	useEffect(() => {fetchMyAPI()}, []);
-	return <div>{data}</div>
-}
+// 	useEffect(() => {fetchMyAPI()}, []);
+// 	return <div>{data}</div>
+// }

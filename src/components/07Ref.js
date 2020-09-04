@@ -38,12 +38,13 @@ export class CustomTextInput extends Component {
 // forwardRef能直接获得ref参数, 并直接传递, 普通函数无法做到此功能:
 const InputWithParentTxt = forwardRef(({parentTxt}, ref) => (<input type="text" ref={ref} defaultValue={parentTxt}/>));
 export class ForwardRef extends Component {
-  componentDidMount() {this.ref.current.focus()}
+  // componentDidMount() {this.ref.current.focus()}
   render() {
     this.ref = createRef();
     return<div>
       <p>forward ref</p>
-      <InputWithParentTxt ref={this.ref} parentTxt="parent props txt"/>
+      <InputWithParentTxt ref={this.ref} parentTxt="parent props text"/>
+      <button onClick={()=> this.ref.current.focus()}>click to focus</button>
     </div>
   }
 }

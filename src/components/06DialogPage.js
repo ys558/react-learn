@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Dialog from './06DialogComponent/Dialog'
+import Dialog from './06PortalDialogComp/Dialog'
 
 export default class Portal extends Component {
   constructor(props) {
