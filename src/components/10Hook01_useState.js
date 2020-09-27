@@ -16,14 +16,7 @@ export const FruitList = ({ fruits, chooseFruit, setFruits }) => {
 	return <ul>
 		{fruits.map((f, index) =><div key={index} >
 			<li onClick={() => chooseFruit(f)}>{f}</li>
-<<<<<<< HEAD
-			{/* 3. 删除相应水果：*/}
-			<button onClick={()=> {
-				return fruitsList.splice(fruitsList.indexOf(f), 1)
-				}}>remove {f}</button>
-=======
 			<button onClick={()=> delFruit(index)}>delete</button>
->>>>>>> origin/master
 		</div>
 		)}
 	</ul>
@@ -52,18 +45,9 @@ const HookUseState = () => {
 			<FruitList 
 				fruits={fruits} 
 				chooseFruit={chooseFruit}
-<<<<<<< HEAD
-				
-				// 3.
-				fruit={fruit}
-				removeFruit={i => {
-					removeFruit(i)
-				}}
-=======
 				setFruits={setFruits}
 				// 3.
 				fruit={fruit}
->>>>>>> origin/master
 			/>
 			<AddFruit 
 				fruits={fruits}

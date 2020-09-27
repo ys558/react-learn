@@ -13,23 +13,18 @@ function ChildrenAndProps(props) {
 
 // 2. 只提供样式的Dialog： 
 const Dialog = props => 
-// 2.1 这里的props.color用<WelcomDialog/>里的color="green"
 <div style={{ border: `4px solid ${props.color || 'blue' }` }}>
 	{props.children}
-	{/* 2.2 这里的footer用<WelcomDialog/>里的footer={footer} */}
 	<div className="footer">
 		{props.footer}
 	</div>
 </div>
-// 2. 只提供内容的WelcomDialog
-const WelcomDialog = props => {
-	return (
-		<Dialog {...props}>
+
+const WelcomDialog = props => <Dialog {...props}>
 			<h1>欢饮光临</h1>
 			<p>感谢使用react</p>
 		</Dialog>
-	)
-}
+
 
 export default class Composition extends React.Component {
 	render() {

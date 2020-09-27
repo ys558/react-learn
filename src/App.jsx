@@ -14,6 +14,7 @@ import HookUseEffect from './components/10Hook02_useEffect'
 import HookUseReducer from './components/10Hook03_useReducer'
 import HookUseContext from './components/10Hook04_useContext'
 import {HookUseMemo, HookUseCallback} from './components/10Hook05_useCallbackAnduseMemoHook'
+import  HookA  from './components/10HookA'
 
 import Context from './components/11Context'
 import WrappedNormalLoginForm from './components/12AntdForm'
@@ -142,9 +143,9 @@ export default class App extends Component {
 
         
         {/* 10. Hook */}
-        <HookUseState></HookUseState>
-        <HookA></HookA>
-        <HookUseEffect></HookUseEffect>
+        {/* <HookUseState></HookUseState> */}
+        {/* <HookA></HookA> */}
+        {/* <HookUseEffect></HookUseEffect> */}
         {/* <HookUseReducer></HookUseReducer> */}
         {/* <HookUseContext></HookUseContext> */}
         {/* <HookUseMemo/> */}
@@ -187,9 +188,9 @@ export default class App extends Component {
 
         {/* <RoutesBase></RoutesBase> */}
         {/* <RoutesActivate></RoutesActivate> */}
-        <Provider store={store}>
+        {/* <Provider store={store}>
           <RoutesLogin></RoutesLogin>
-        </Provider>
+        </Provider> */}
 
         {/* <Tree/> */}
       </div>

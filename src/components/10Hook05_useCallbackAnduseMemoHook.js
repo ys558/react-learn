@@ -38,6 +38,7 @@ export const HookUseMemo = () => {
 
 	{/* 2. 使用useMemo进行优化: */}
 	<h3>{count}, {expensive}</h3>
+
 	<h3>input输入时,再不会影响+1的执行,页面只会局部刷新,不再打印console.log('compute'):{val}</h3>
 		<div>
 			<button onClick={()=> setCount(count + 1)}>+1</button>
@@ -55,19 +56,19 @@ export const HookUseCallback = () => {
 
 	return <div>
 		<span>
-			Parent count: {count}
+			父组件计数:: {count}
 			<button onClick={()=> setCount(count + 1)}>parent count +1</button>
 		</span>
-		<Child callback={callback} />
+		<ChildOfCallback callback={callback} />
 	</div>
 }
 
-const Child = ({callback}) =>{
+const ChildOfCallback = ({callback}) =>{
 	// 将callback作为初始值: 
 	const [count, setCount] = useState(()=> callback())
 	useEffect(() => setCount(callback()), [callback])
 	
 	return <div>
-		Child count: {count}
+		子组件计数:: {count}
 	</div>
 }
