@@ -62,7 +62,7 @@ import RoutesLogin from './components/19.2.1Routes_login'
 import store from './components/19.3Route_storeToLogin'
 
 // 19
-import ReduxwithHooks from './components/20ReduxwithHooks'
+import ReduxwithHooks from './components/20ReduxwithHooks.jsx'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
