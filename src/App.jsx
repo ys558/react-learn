@@ -61,6 +61,9 @@ import RoutesActivate from './components/19.1Routes_activate'
 import RoutesLogin from './components/19.2.1Routes_login'
 import store from './components/19.3Route_storeToLogin'
 
+// 19
+import ReduxwithHooks from './components/20ReduxwithHooks'
+
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
 // }
@@ -193,6 +196,9 @@ export default class App extends Component {
         </Provider> */}
 
         {/* <Tree/> */}
+
+        {/* 20. redux with hooks */}
+        <ReduxwithHooks />
       </div>
     )
   }
