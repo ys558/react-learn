@@ -1,7 +1,9 @@
 /**
- * @自定义Hook
- * 自定义 Hook 必须以 “use” 开头。这个约定非常重要。不遵循的话，由于无法判断某个函数是否包含对其内部 Hook 的调用，React 将无法自动检查你的 Hook 是否违反了 Hook 的规则。
- * 在两个组件中使用相同的 Hook 不共享state。自定义 Hook 是一种重用状态逻辑的机制(例如设置为订阅并存储当前值)，所以每次使用自定义 Hook 时，其中的所有 state 和副作用都是完全隔离的。
+ * @UseMeno
+ * @UseCallback
+类似与 Vue 的计算属性 computed，useMemo 具有缓存，依赖改变才重新渲染的功能。
+跟它的小弟 useCallback 的唯一区别是：useMemo可以缓存所有对象，useCallback只能缓存函数。
+useCallback(x => log(x), [m]) 等价于 useMemo(() => x => log(x), [m])
  */
 import React, {useEffect,useState, useCallback, useMemo} from 'react'
 
@@ -21,7 +23,7 @@ export const HookUseMemo = () => {
 	// 	return sum
 	// }
 
-	// 2. 使用useMemo进行优化:
+	// 2. 使用useMemo进行优化: useMemo 具有缓存，依赖改变才重新渲染的功能。
 	const expensive = useMemo(() => {
 		console.log('compute')
 		let sum = 0;

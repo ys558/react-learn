@@ -62,7 +62,7 @@ import RoutesLogin from './components/19.2.1Routes_login'
 import store from './components/19.3Route_storeToLogin'
 
 // 19
-import ReduxwithHooks from './components/20ReduxwithHooks.jsx'
+import UseRefHook from './components/10Hook06_useRef'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -153,6 +153,7 @@ export default class App extends Component {
         {/* <HookUseContext></HookUseContext> */}
         {/* <HookUseMemo/> */}
         {/* <HookUseCallback/> */}
+        {/* <UseRefHook/> */}
 
         {/* 11. 隔代传参Provider, Context */}
         {/* <Context></Context> */}
@@ -196,9 +197,6 @@ export default class App extends Component {
         </Provider> */}
 
         {/* <Tree/> */}
-
-        {/* 20. redux with hooks */}
-        <ReduxwithHooks />
       </div>
     )
   }
