@@ -13,7 +13,7 @@ import HookUseState from './components/10Hook01_useState'
 import HookUseEffect from './components/10Hook02_useEffect'
 import HookUseReducer from './components/10Hook03_useReducer'
 import HookUseContext from './components/10Hook04_useContext'
-import {HookUseMemo, HookUseCallback} from './components/10Hook05_useCallbackAnduseMemoHook'
+// import {HookUseMemo, HookUseCallback} from './components/10Hook05_useCallbackAnduse0MemoHook'
 import  HookA  from './components/10HookA'
 
 import Context from './components/11Context'
@@ -62,7 +62,12 @@ import RoutesLogin from './components/19.2.1Routes_login'
 import store from './components/19.3Route_storeToLogin'
 
 // 19
+import UseRef_UseImperativeHandle from './components/10Hook07_useRef_useImperativeHandle'
 import UseRefHook from './components/10Hook06_useRef'
+import UseLayoutEffectHook from './components/10Hook08_useLayoutEffect'
+
+// 20
+import DataFrChild2ParentByCallback from './components/20DataFrChild2ParentByCallback'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -119,7 +124,7 @@ export default class App extends Component {
         {/* <Portal/> */}
 
         {/* 07. 组件化存在的问题, 多次渲染 */}
-        {/* <ComponentIssue></ComponentIssue> */}
+        <ComponentIssue></ComponentIssue>
         {/* 07. 跨代传值Context */}
         {/* <ProviderConsumer></ProviderConsumer> */}
 
@@ -153,7 +158,9 @@ export default class App extends Component {
         {/* <HookUseContext></HookUseContext> */}
         {/* <HookUseMemo/> */}
         {/* <HookUseCallback/> */}
-        {/* <UseRefHook/> */}
+        {/* <UseRefHook /> */}
+        {/* <UseRef_UseImperativeHandle/> */}
+        {/* <UseLayoutEffectHook/> */}
 
         {/* 11. 隔代传参Provider, Context */}
         {/* <Context></Context> */}
@@ -197,6 +204,8 @@ export default class App extends Component {
         </Provider> */}
 
         {/* <Tree/> */}
+
+        <DataFrChild2ParentByCallback />
       </div>
     )
   }
