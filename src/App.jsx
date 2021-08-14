@@ -68,6 +68,9 @@ import UseLayoutEffectHook from './components/10Hook08_useLayoutEffect'
 
 // 20
 import DataFrChild2ParentByCallback from './components/20DataFrChild2ParentByCallback'
+import EventEmitterDemo from './components/21EventEmitterDemo'
+
+// 21
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -124,7 +127,7 @@ export default class App extends Component {
         {/* <Portal/> */}
 
         {/* 07. 组件化存在的问题, 多次渲染 */}
-        <ComponentIssue></ComponentIssue>
+        {/* <ComponentIssue></ComponentIssue> */}
         {/* 07. 跨代传值Context */}
         {/* <ProviderConsumer></ProviderConsumer> */}
 
@@ -204,8 +207,9 @@ export default class App extends Component {
         </Provider> */}
 
         {/* <Tree/> */}
+        {/* <DataFrChild2ParentByCallback /> */}
 
-        <DataFrChild2ParentByCallback />
+        <EventEmitterDemo/>
       </div>
     )
   }

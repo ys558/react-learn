@@ -6,6 +6,8 @@
     "antd": "^3.25.3",
     "babel-plugin-import": "^1.12.2",
     "customize-cra": "^0.8.0",
+    "events": "^3.3.0",
+    "fbemitter": "^3.0.0",
     "react": "^16.8.6",
     "react-app-rewired": "^2.1.4",
     "react-dom": "^16.8.6",
