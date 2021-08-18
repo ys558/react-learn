@@ -6,6 +6,7 @@ import CartSample from './components/04CartSample'
 import LifeCycle from './components/05LifeCycle'
 import AntDesignUI from './components/06AntDesignUI'
 import ComponentIssue from './components/07ComponentIssue'
+import ComponentIssue2 from './components/07ComponentIssue2'
 import Composition from './components/09Composition'
 import Composition2 from './components/09Composition2'
 import Composition3 from './components/09Composition3_React_Children'
@@ -125,6 +126,7 @@ export default class App extends Component {
 
         {/* 07. 组件化存在的问题, 多次渲染 */}
         <ComponentIssue></ComponentIssue>
+        <ComponentIssue2></ComponentIssue2>
         {/* 07. 跨代传值Context */}
         {/* <ProviderConsumer></ProviderConsumer> */}
 
@@ -205,7 +207,7 @@ export default class App extends Component {
 
         {/* <Tree/> */}
 
-        <DataFrChild2ParentByCallback />
+        {/* <DataFrChild2ParentByCallback /> */}
       </div>
     )
   }
