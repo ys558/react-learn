@@ -70,6 +70,9 @@ import UseLayoutEffectHook from './components/10Hook08_useLayoutEffect'
 import DataFrChild2ParentByCallback from './components/20DataFrChild2ParentByCallback'
 import EventEmitterDemo from './components/21EventEmitterDemo'
 
+// 22
+import  { MbxUseWrap } from './components/22MobxWithHooks'
+
 // 21
 
 // const formatName = (user) => {
@@ -209,7 +212,9 @@ export default class App extends Component {
         {/* <Tree/> */}
         {/* <DataFrChild2ParentByCallback /> */}
 
-        <EventEmitterDemo/>
+        {/* <EventEmitterDemo/> */}
+
+        <MbxUseWrap/>
       </div>
     )
   }
