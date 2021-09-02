@@ -72,9 +72,14 @@ import DataFrChild2ParentByCallback from './components/20DataFrChild2ParentByCal
 import EventEmitterDemo from './components/21EventEmitterDemo'
 
 // 22
+// hooks写法：
 import  { MbxUseWrap } from './components/22MobxWithHooks'
-
+// class写法：
+import MobxWithClass, { Store } from './components/22MobxWithClass'
 // 21
+
+// 23
+import {FuncOutOfClassByRef, FuncOutOfClassByHOC}  from './components/23FuncOutOfClass'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -215,7 +220,11 @@ export default class App extends Component {
 
         {/* <EventEmitterDemo/> */}
 
-        <MbxUseWrap/>
+        {/* <MbxUseWrap/> */}
+        {/* <MobxWithClass store={new Store()}/> */}
+
+        {/* <FuncOutOfClassByRef/> */}
+        <FuncOutOfClassByHOC/>
       </div>
     )
   }
