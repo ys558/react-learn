@@ -79,7 +79,7 @@ import MobxWithClass, { Store } from './components/22MobxWithClass'
 // 21
 
 // 23
-import {FuncOutOfClassByRef, FuncOutOfClassByHOC}  from './components/23FuncOutOfClass'
+import {ByRef, ByPropsThis}  from './components/23ControledByOtherClassComp'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -223,8 +223,8 @@ export default class App extends Component {
         {/* <MbxUseWrap/> */}
         {/* <MobxWithClass store={new Store()}/> */}
 
-        {/* <FuncOutOfClassByRef/> */}
-        <FuncOutOfClassByHOC/>
+        <ByRef/>
+        <ByPropsThis/>
       </div>
     )
   }
