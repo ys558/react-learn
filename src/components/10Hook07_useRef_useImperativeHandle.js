@@ -1,10 +1,11 @@
 /**
- * @useRef
- * useRef结合useImperativeHandle可以通过父组件获取子组件的方法
+ * @useImperativeHandle
+ * @forwardRef
+ * 如果是非DOM节点，则用useRef 结合 forwardRef
+  useImperativeHandle 获取子组件里真实的DOM节点的function在父组件里使用
  */
-import React, {useState, useRef, useEffect, useLayoutEffect, forwardRef, useImperativeHandle} from 'react'
+import React, { useRef, forwardRef, useImperativeHandle } from 'react'
 
-// 例1:
 const UseRef_UseImperativeHandle2 = () => {
   let parentRef = useRef()
   const getFocus = () => {
@@ -12,20 +13,18 @@ const UseRef_UseImperativeHandle2 = () => {
     parentRef.current.setValue('something')
   }
   return <>
-    <ForwardedChild ref={parentRef} />
-    <button onClick={getFocus}>获得焦点</button>
+    <Child ref={parentRef} />
+    <button onClick={getFocus}>获得焦点, 并填充something</button>
   </>
 }
 
-const A = (props, parentRef) => {
+const Child = forwardRef((props, parentRef) => {
   let inputRef = useRef()
   useImperativeHandle(parentRef, () => ({
     focus: () => inputRef.current.focus(),
     setValue: newVal =>  inputRef.current.value = newVal
   }));
   return <input type="text" ref={inputRef} />
-}
-
-const ForwardedChild = forwardRef(A);
+})
 
 export default UseRef_UseImperativeHandle2
