@@ -92,6 +92,7 @@ import AvoidReRenderInChildComp2 from './components/24AvoidReRenderInChildComp2'
 // 25
 import React18useTransition from './components/25React18useTransition'
 import React18useDefferedValue from './components/25React18useDefferValue'
+import React18useId from './components/25React18useId'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -246,7 +247,8 @@ export default class App extends Component {
 
         {/* 25 */}
         {/* <React18useTransition /> */}
-        <React18useDefferedValue/>
+        {/* <React18useDefferedValue/> */}
+        <React18useId />
       </div>
     )
   }

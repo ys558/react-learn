@@ -18,7 +18,7 @@ const LIST_SIZE = 30000;
 const List = ({ input }) => {
   // 1. 用useDeferredValue接口，把大列表input放进去进行渲染,
   // 好处是父组件的input框可以实时输入了，渲染的页面会延迟一些，提升体验
-  const defferedValue = useDeferredValue(input)
+  const defferedValue = useDeferredValue(input, { timeoutMs: 5000})
 
   useEffect(() => {
     // 2. useDeferredValue 和useTransition一样，执行优先级很低
