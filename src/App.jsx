@@ -89,6 +89,9 @@ import {ByRef, ByPropsThis}  from './components/23ControledByOtherClassComp'
 import AvoidReRenderInChildComp1 from './components/24AvoidReRenderInChildComp1'
 import AvoidReRenderInChildComp2 from './components/24AvoidReRenderInChildComp2'
 
+// 25
+import React18useTransition from './components/25React18useTransition'
+
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
 // }
@@ -182,7 +185,7 @@ export default class App extends Component {
         {/* <UseRefHook /> */}
         {/* <UseRef_UseImperativeHandle/> */}
         {/* <UseLayoutEffectHook/> */}
-        <CallBackAndMeno/>
+        {/* <CallBackAndMeno/> */}
 
         {/* 11. 隔代传参Provider, Context */}
         {/* <Context></Context> */}
@@ -239,6 +242,9 @@ export default class App extends Component {
         {/* 24 */}
         {/* <AvoidReRenderInChildComp1/> */}
         {/* <AvoidReRenderInChildComp2/> */}
+
+        {/* 25 */}
+        <React18useTransition />
       </div>
     )
   }
