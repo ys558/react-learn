@@ -5,18 +5,9 @@ const Index =  (props = {}) => {
   const [count, setCount] = useState(0);
   const [number, setNumber] = useState(0);
 
-  const handleSetStep = () => {
-      setStep(step + 1);
-  }
-
-  const handleSetCount = () => {
-      setCount(count + 1);
-  }
-
-  const handleCalNumber = () => {
-      setNumber(count + step);
-  }
-
+  const handleSetStep = () => setStep(step + 1)
+  const handleSetCount = () => setCount(count + 1)
+  const handleCalNumber = () => setNumber(count + step)
 
   return (
     <div>

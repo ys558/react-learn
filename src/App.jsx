@@ -14,7 +14,11 @@ import HookUseState from './components/10Hook01_useState'
 import HookUseEffect from './components/10Hook02_useEffect'
 import HookUseReducer from './components/10Hook03_useReducer'
 import HookUseContext from './components/10Hook04_useContext'
-// import {HookUseMemo, HookUseCallback} from './components/10Hook05_useCallbackAnduse0MemoHook'
+import {
+  // HookUseMemo, 
+  // HookUseCallback, 
+  CallBackAndMeno
+} from './components/10Hook05_useCallbackAnduseMemoHook'
 import  HookA  from './components/10HookA'
 
 import Context from './components/11Context'
@@ -81,6 +85,10 @@ import MobxWithClass, { Store } from './components/22MobxWithClass'
 // 23
 import {ByRef, ByPropsThis}  from './components/23ControledByOtherClassComp'
 
+// 24
+import AvoidReRenderInChildComp1 from './components/24AvoidReRenderInChildComp1'
+import AvoidReRenderInChildComp2 from './components/24AvoidReRenderInChildComp2'
+
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
 // }
@@ -137,6 +145,7 @@ export default class App extends Component {
 
         {/* 07. 组件化存在的问题, 多次渲染 */}
         {/* <ComponentIssue></ComponentIssue> */}
+        {/* <ComponentIssue2></ComponentIssue2> */}
         {/* 07. 跨代传值Context */}
         {/* <ProviderConsumer></ProviderConsumer> */}
 
@@ -173,6 +182,7 @@ export default class App extends Component {
         {/* <UseRefHook /> */}
         {/* <UseRef_UseImperativeHandle/> */}
         {/* <UseLayoutEffectHook/> */}
+        <CallBackAndMeno/>
 
         {/* 11. 隔代传参Provider, Context */}
         {/* <Context></Context> */}
@@ -223,8 +233,12 @@ export default class App extends Component {
         {/* <MbxUseWrap/> */}
         {/* <MobxWithClass store={new Store()}/> */}
 
-        <ByRef/>
-        <ByPropsThis/>
+        {/* <ByRef/> */}
+        {/* <ByPropsThis/> */}
+
+        {/* 24 */}
+        {/* <AvoidReRenderInChildComp1/> */}
+        {/* <AvoidReRenderInChildComp2/> */}
       </div>
     )
   }

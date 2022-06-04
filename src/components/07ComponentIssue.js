@@ -87,15 +87,15 @@ export default class ComponentIssue extends Component {
 	传过来的属性c需要改动成{...c}，把各个元素拆解开来展示
 */
 // class Comment extends PureComponent {
-//     render() {
-// 			// 仅输出两次：正常
-// 			console.log(`render comment`)
-// 			return (
-// 				<div>
-// 				<p>{this.props.body}</p>
-// 				<p> --- {this.props.author}</p>
-// 				</div>
-// 			);
+// 	render() {
+// 		// 仅输出两次：正常
+// 		console.log(`render comment`)
+// 		return (
+// 			<div>
+// 			<p>{this.props.body}</p>
+// 			<p> --- {this.props.author}</p>
+// 			</div>
+// 		);
 // }}
 
 
