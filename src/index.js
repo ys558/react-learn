@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.jsx';
 import * as serviceWorker from './serviceWorker';
+import { createRoot } from 'react-dom/client';
+
 // 13.1
 // import store  from './store/13.1store'
 // 13.2
@@ -31,7 +33,7 @@ import * as serviceWorker from './serviceWorker';
 //     document.getElementById('root'))
 
 // 13.4 subscribe的作用--订阅, 往store里塞若干函数,形成一个回调函数的数组:
-ReactDOM.render(<App />, document.getElementById('root'))
+// ReactDOM.render(<App />, document.getElementById('root'))
 // store.subscribe(() => ReactDOM.render(<App />, document.getElementById('root')))
 
 // 13.5 自行定义的myReactRedux应用:
@@ -40,5 +42,10 @@ ReactDOM.render(<App />, document.getElementById('root'))
 //     <App />
 //   </Provider>, 
 // document.getElementById('root'))
+
+// react 18:
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<App tab="home" />);
 
 serviceWorker.unregister();
