@@ -91,6 +91,7 @@ import AvoidReRenderInChildComp2 from './components/24AvoidReRenderInChildComp2'
 
 // 25
 import React18useTransition from './components/25React18useTransition'
+import React18useDefferedValue from './components/25React18useDefferValue'
 
 // const formatName = (user) => {
 //   return `${user.firstName} ${user.lastName}`
@@ -244,7 +245,8 @@ export default class App extends Component {
         {/* <AvoidReRenderInChildComp2/> */}
 
         {/* 25 */}
-        <React18useTransition />
+        {/* <React18useTransition /> */}
+        <React18useDefferedValue/>
       </div>
     )
   }
